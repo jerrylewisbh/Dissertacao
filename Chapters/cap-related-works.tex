@@ -1,0 +1,128 @@
+\chapter{\hspace*{3pt} Related Works}
+\label{chapter:related-works}
+
+
+The knowledge encoded in Wikipedia has being used by many researchers as a tool for performing several tasks, including text categorization \cite{Gabrilovich:2006}, co-reference resolution \cite{strube2006wikirelate}, predicting document topics \cite{schonhofen2009identifying}, automatic word sense disambiguation \cite{mihalcea2007using}, searching synonyms \cite{krizhanovsky2006synonym} and computing semantic relatedness 
+\cite{ponzetto2006exploiting}, \cite{gabrilovich2007computing}, \cite{milne2007computing}.
+
+For better comprehension, we described the researches studied grouped as follows: 
+
+\begin{enumerate}
+\item Researches dedicated to understanding and describing the Wikipedia’s latent category structure.
+\item Researches that exploit  Wikipedia knowledge to determine the content of textual resources.
+\item Researches that use information extracted from Wikipedia to create text classifiers.
+\end{enumerate}
+
+
+\section{\hspace*{3pt}Wikipedia Category Structure}
+
+The articles in Wikipedia are associated with one or more categories, and the categories are linked together forming a latent structure. This structure is created and curated by volunteers, meaning that the quality of reliability of this structure is dependent on the knowledge of the contributors.
+
+The method proposed in this thesis aims at categorizing text-based resources based on the Named Entities found on the text and its relation to a set of predefined categories in Wikipedia. We use the Wikipedia category structure as a graph and determine the categorization based on the  shortest paths between the categories associated with the entities and a set of more generic predefined Wikipedia categories. We have studied two projects that focus on explaining Wikipedia’s category structure and the types of relationships between category: 
+
+
+\begin{enumerate}
+
+\item Decoding Wikipedia Categories for Knowledge Acquisition \cite{nastase2008decoding} which tries to understand the conceptual relationships between categories.
+\item Extracting Semantic Relationships between Wikipedia Categories \cite{chernov2006extracting} which concentrates on the deriving semantic relationships within the categories in the graph.
+
+\end{enumerate}
+
+
+Because humans create it, the structure of categories can vary depending on the people who are involved in the process. The work described in \cite{nastase2008decoding} is a project to automatically understand the structure of categories created by contributors. It classifies the types of relationship between the categories, based on the purpose of these relationships. This project focuses on relationship types represented in links between categories and articles, and between categories. Two links within the category structure can represent similar relationship types without having similar category names. Thus, an automatic approach for representing the category links in a standardized way
+was created in \cite{nastase2008decoding} .
+
+The project described in \cite{chernov2006extracting} analyzes the connections within the category structure aiming to automatically derive semantic features from Wikipedia categories. Project \cite{chernov2006extracting} covers an implementation for finding articles with the same meaning by looking at the category links in Wikipedia’s category structure. The semantic similarity for an article is found by creating a \gls{scs} which represents the semantic connection to other articles. Their result is a semantic schema that retrieves the most relevant articles for a given word, without considering the word’s syntax.
+
+Both of these projects provide useful information about the category structure and contain relevant ideas for further implementation.
+
+
+
+%\cite{halavais2008analysis} quantitatively compared the distribution of 3,000 Wikipedia articles coded into Library of Congress categories with a distribution of published books. They found substantial overlap between Wikipedia categories and topics from other encyclopedias, however, the number of articles sampled and categories examined was relatively small.
+%\cite{kittur2009s} demonstrated a simple technique for determining the distribution of topics for articles in Wikipedia, mapping all items to the top categories. The process was based on building the Category Graph of Wikipedia and counting the edges on the shortest paths from the categories of an article to the top categories of Wikipedia. 
+%\cite{farina2011automatically} improved this by penalizing edges followed in the wrong direction concerning the hierarchy. They were able to account for the orientation of the categories assignments, without losing information, and showed to outperform the original method, measured as the similarity with manually generated assignments.
+%\cite{strube2006wikirelate} developed a system named WikiRelate!. They used data from Wordnet, Wikipedia, and Google for computing degrees of semantic similarity and reported that Wikipedia outperforms Wordnet.  They used different measures for computing semantic relatedness and showed good results with the one based on paths. The success of their experiments gives support to our method, which also utilizes the Wikipedia Graph. 
+
+
+
+\section{\hspace*{3pt}Wikipedia as Knowledge Base}
+
+
+Our primary goal is to categorize textual resources based on the set of categories of Wikipedia structure. This task requires a way of extracting features from Wikipedia.
+There are many projects with the goal of identifying Wikipedia entries in text and taking advantage of the Wikipedia’s encyclopedic knowledge since Wikipedia is a massive resource of encyclopedic knowledge. Some of these projects identified in this research are: 
+
+\begin{itemize}
+
+\item  Entity Extraction, Linking, Classification, and Tagging for Social Media: A Wikipedia-based Approach \cite{gattani2013entity} which extracts Wikipedia article titles
+in tweets for understanding their content.
+
+\item Large-Scale Taxonomy Mapping for Restructuring and Integrating Wikipedia\cite{ponzetto2009large}: The approach presented in this project use WordNet subsumption hierarchy, to perform category disambiguation and taxonomy restructuring in Wikipedia structure.
+
+\item Overcoming the Brittleness Bottleneck using Wikipedia: Enhancing Text Categorization with Encyclopedic Knowledge \cite{Gabrilovich:2006}.
+
+\end{itemize}
+
+The research described in \cite{ponzetto2009large} provides an extension to WordNet. It takes advantage of the semantic information from synsets to generate automatically derive a  taxonomy.
+
+The project’s method uses WikiTaxonomy, a taxonomy based on Wikipedia, and improve it by linking the entries in the taxonomy to the synset from WordNet. These results are used to generate a new and improved Wikipedia taxonomy.
+
+Encyclopedic knowledge from Wikipedia is also found in \cite{Gabrilovich:2006}. This project creates a classifier that is extended with knowledge from Wikipedia. The authors assume that each Wikipedia article represents a concept and that documents can be classified under a feature space of Wikipedia concepts.
+
+The research presented in \cite{gattani2013entity} creates a category-based classifier that relies on knowledge from Wikipedia. This project has a goal very similar to ours: to categorize tweets based on their textual content.
+
+The solution implemented for this problem uses Wikipedia as a knowledge base, where Wikipedia articles are connected to concepts used in the classification process.
+
+
+\section{\hspace*{3pt}Classifiers Based on Wikipedia}
+
+The approach described in this thesis is a category-based classifier, which classifies textual resources based on the relation of the text being classified and a set o predefined categories on Wikipedia. Classifiers can be created in many forms, and the classifiers can focus on different features. We have studied some projects which creates classifiers from Wikipedia:
+\begin{enumerate}
+
+\item What's in Wikipedia?: mapping topics and conflict using socially annotated category structure \cite{kittur2009s}
+\item Identifying document topics using the Wikipedia category network \cite{schonhofen2009identifying}  
+\item Entity Extraction, Linking, Classification, and Tagging for Social Media: A Wikipedia-based Approach \cite{Gabrilovich:2006}.
+\end{enumerate}
+
+
+
+The method proposed by Kittur and Chi \cite{kittur2009s} is also similar to our approach. 
+Their goal is to automatically assign a Wikipedia article to a set of what they call macro-categories (A subset of Wikipedia categories that is in the top of the hierarchy) 
+The main difference is that their approach is limited to articles inside Wikipedia, and cannot be generalized for other text-based resources. 
+
+
+Other similar work regarding our approach is the research presented in  \cite{schonhofen2009identifying} . This project is closely related to our research, with a similar goal: to determine whether documents can be categorized by only exploring titles and categories of Wikipedia articles.
+
+The main difference between this project and our approach is the choice of output categories in the final classification. The authors categorizes documents to a broader number of Wikipedia categories, while we categorize documents to a set of predefined, more generic group of categories. Their categorization approach are similar to ours, and consists of two main steps:
+1. Look for word compounds within the text that match processed titles of Wikipedia articles.
+2. Retrieve the Wikipedia articles’ categories.
+
+The classifier in \cite{schonhofen2009identifying} is a term-based classifier also similar to our approach, but the keywords are categorized to the corresponding Wikipedia articles’ categories instead of an independent category set. Another difference is that we look at the whole category structure, while \cite{schonhofen2009identifying} looks at categories retrieved from the matched Wikipedia article titles, hence it is more limited. 
+
+Another term-based classifier is found in \cite{Gabrilovich:2006}, which is a project for classifying and tagging tweets. The project uses Wikipedia to create a knowledge base, where they process titles of Wikipedia articles and link them towards suitable categories representing the content of their article.
+
+
+
+\subsection{\hspace*{3pt} Evaluation of Classifiers}
+
+The evaluation measures for the classifiers presented in \cite{schonhofen2009identifying} and  \cite{Gabrilovich:2006} have been precision, recall, and F1-Score. The researchers also presented the micro-average evaluation, which means that they take the measures individually for each class.
+
+It is relevant to analyze what the classifiers described in this section evaluated so that we can compare our results
+with the results of other classifiers. 
+
+The evaluation of \cite{schonhofen2009identifying} is divided into two experiments: 
+
+\begin{enumerate}
+
+\item Classification of Wikipedia articles based on their text bodies.
+\item Classification of two independent corpora: 20 Newsgroups and RCV1.making it suitable for comparison with our approach.
+
+\end{enumerate}
+
+
+The categorization evaluation of \cite{gattani2013entity} is based on topics within the tweets.
+
+Since the authors did not use the set of categories and also added information to their knowledge
+base from other places external to Wikipedia, which means that their classes are broader and not suitable for comparison. 
+
+Kittur and Chi \cite{kittur2009s} evaluated the approach by comparing the attributions made by their method with the judgment of human raters. Although they preset a good correlation between the method and the judgments, the experiment was realized in a very small scale. 
+

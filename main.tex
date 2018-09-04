@@ -1,0 +1,170 @@
+% Arquivo LaTeX de exemplo de dissertação a ser apresentados ao PPGI do Centro de Ciências Exatas e Tecnologia (CCET) - UNIRIO
+%
+% Versão 1.0: Sábado, 14 de Setembro de 2013
+%
+% Criação: Wander dos Santos Vasconcellos
+\documentclass[12pt, oneside, a4paper, final]{report}
+\usepackage[a4paper,left=3.0cm,right=3.0cm,top=2.5cm,bottom=2.5cm]{geometry} % definição das margens
+\usepackage{setspace} % habilitando o espaço entre linhas
+\usepackage{titlesec}
+\usepackage{dirtytalk}
+\usepackage{csquotes}
+\usepackage[normalem]{ulem} % habilitando palavras sublinhadas
+\usepackage{amsthm, amssymb, amsmath, pxfonts} % permite símbolos matemáticos
+\usepackage{mathrsfs} % permite uso de fontes para conjuntos
+\usepackage{graphicx} % permite inserção de figuras
+%\usepackage{algorithmic}	% pacote para uso na definição do ambiente para algoritmos
+\usepackage{framed}
+\usepackage{booktabs}
+\usepackage{comment}
+\usepackage{hyperref}
+\usepackage{xr}
+\usepackage{makeidx}
+\usepackage{adjustbox}
+
+\usepackage[mathcal]{euler}
+\usepackage{fontspec}
+\usepackage{polyglossia} 
+\setdefaultlanguage{english}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[Extension=.ttf,
+             BoldFont=timesbd,
+             ItalicFont=timesi,
+             BoldItalicFont=timesbi]{times} % habilitando a fonte do texto
+\setromanfont[Extension=.ttf,
+             BoldFont=timesbd,
+             ItalicFont=timesi,
+             BoldItalicFont=timesbi]{times}
+\setsansfont[Extension=.ttf,
+             BoldFont=arialbd,
+             ItalicFont=ariali,
+             BoldItalicFont=arialbi]{arial}
+\setmonofont[Extension=.ttf,
+             BoldFont=courbd,
+             ItalicFont=couri,
+             BoldItalicFont=courbi]{cour}
+
+
+\linespread{1.5} % espaço entre linhas de 1.5
+\setlength{\parskip}{10pt} % espaço entre parágrafos
+\setcounter{secnumdepth}{3} % habilita a variável \thesubsubsection
+\setcounter{tocdepth}{3} % Índice até subsubsection
+\titleformat{\chapter}[hang]{\fontsize{16}{16}\normalfont\bfseries\filleft\selectfont}{\thechapter.}{0pt}{\normalfont\bfseries}
+\titlespacing{\chapter}{0pt}{72pt}{60pt}
+\titleformat{\section}[hang]{\fontsize{12}{12}\normalfont\bfseries\selectfont}{\thesection}{0pt}{\normalfont\bfseries}
+\titlespacing{\section}{0pt}{24pt}{12pt}
+\titleformat{\subsection}[hang]{\fontsize{12}{12}\normalfont\bfseries\selectfont}{\thesubsection}{0pt}{\normalfont\bfseries}
+\titlespacing{\subsection}{0pt}{12pt}{6pt}
+\titleformat{\subsubsection}[hang]{\fontsize{12}{12}\normalfont\bfseries\selectfont}{\thesubsubsection}{0pt}{\normalfont\bfseries}
+\titlespacing{\subsubsection}{0pt}{6pt}{3pt}
+
+
+\hypersetup{
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
+    	filecolor=black,      		% color of file links
+		urlcolor=black,
+}
+
+\graphicspath{ {imgs/} }		% Local onde as imagens serão procuradas
+
+\usepackage[titletoc]{appendix}
+
+\usepackage{lastpage}
+\usepackage{float}
+
+\usepackage{listings}
+\lstset{language=SQL,morekeywords={PREFIX,java,rdf,rdfs,url}}
+
+
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}				% Controle das cores
+\definecolor{orange}{rgb}{1,0.5,0}
+
+\usepackage{enumerate}
+\renewcommand{\labelitemi}{$-$}
+
+%INICIO CONFIGURAÇÃO DO PACOTE DE ALGORITMO
+\usepackage[chapter]{algorithm}
+\usepackage{algorithmicx}
+\usepackage{algpseudocode}
+\usepackage{amsmath}
+
+\makeatletter
+\renewcommand{\ALG@name}{Algorithm}
+\renewcommand{\listalgorithmname}{List of \ALG@name s}
+\algrenewcommand\ALG@beginalgorithmic{\footnotesize}
+\makeatother
+
+\renewcommand{\algorithmicend}{\textbf{end}}
+\renewcommand{\algorithmicif}{\textbf{if}}
+\renewcommand{\algorithmicthen}{\textbf{then}}
+\renewcommand{\algorithmicdo}{\textbf{do}}
+\renewcommand{\algorithmicwhile}{\textbf{while}}
+\renewcommand{\algorithmicfor}{\textbf{for}}
+\renewcommand{\algorithmicrepeat}{\textbf{repeat}}
+\renewcommand{\algorithmicreturn}{\textbf{return}}
+\renewcommand{\algorithmicelse}{\textbf{else}}
+\renewcommand{\algorithmicuntil}{\textbf{until}}
+\renewcommand{\algorithmicforall}{\textbf{for each}}
+%FIM CONFIGURAÇÃO DO PACOTE DE ALGORITMO
+
+\newtheorem{theorem}{Teorema}
+
+\usepackage{longtable} %tabelas com mais de uma pagina
+\usepackage{ltcaption}
+\renewcommand\CaptionLabelFont{\normalsize}
+\renewcommand\CaptionTextFont{\normalsize}
+\setlength{\LTcapwidth}{\linewidth}
+
+\usepackage{lscape} %pacote para landscape
+
+\usepackage{colortbl} %cor para as tabelas
+\definecolor{tblH}{rgb}{1,1,1}
+\definecolor{tblO}{rgb}{0.9,0.9,0.9}
+\definecolor{tblE}{rgb}{0.6,0.6,0.6}
+\usepackage{hhline} %cor para as tabelas
+\usepackage{pdfpages}
+
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{glossaries}
+\usepackage{rotating}
+\usepackage{ltxtable}
+\makeglossaries
+
+\begin{document}
+ 	
+    \pagestyle{empty}
+    %\include{Pre/capa}
+    %\include{Pre/folhaDeRosto}
+    %\include{Pre/fichaCatalografica}
+    \pagestyle{plain}
+    \pagenumbering{roman}
+    %\include{Pre/dedicatoria}
+    %\include{Pre/agradecimento}
+    %\include{Pre/abstract}
+    %\include{Pre/resumo}
+    \include{Lists/indiceTexto}
+    \include{Lists/indiceFiguras}
+    \include{Lists/indiceTabelas}
+    \include{Lists/listaNomenclaturas}
+    \pagestyle{headings}
+    \pagenumbering{arabic}
+    
+    %Capítulos
+    \setcounter{page}{1}
+    \input{Chapters/cap-intro}
+	\input{Chapters/cap-concepts}
+    \input{Chapters/cap-graph-analysis}
+    \input{Chapters/cap-methodology}  
+ 	\input{Chapters/cap-experiments}
+    \input{Chapters/cap-related-works}
+    \input{Chapters/cap-conclusion}
+	\input{appendices}
+	\bibliographystyle{acm-unirio}
+	\bibliography{referencias}
+	
+\end{document}

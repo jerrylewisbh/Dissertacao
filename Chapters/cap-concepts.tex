@@ -2,13 +2,15 @@
 \label{chapter:related-concepts}
 
 
-
 This chapter introduces the theoretical concepts used to contextualize the research described in this thesis.
 
-The concepts related to Collective Intelligence and Collective construction of Knowledge are essential for understanding the motivation to choose an approach that uses the knowledge of the contributors of Wikipedia, rather than experts. The description of Wikipedia and its features is central to the understanding of the organization of this body of knowledge, as well as the possibilities and challenges that emerge from decoding  the underlying structure. 
-The concepts related to Information Retrieval and Extraction are essential to understanding the tasks applied in the proposed solution to extract the entities and the categories from the text-resources.
-We also provide some general information about natural language processing (NLP) techniques that are applicable to our categorization method. 
-This chapter ends with an overview of the concept and methods for the automatic classification of textual resources, as it is the primary goal of the research presented in this thesis. 
+We provide general information about natural language processing (NLP) techniques that apply to our categorization method. 
+The concepts related to Information Retrieval and Documents Representation are essential to understanding the tasks applied in the proposed solution to extract the entities and the categories from the text-resources on the Web.
+We also present an overview of the concept and methods for the automatic classification of textual resources, as it is the primary goal of the research presented in this thesis. 
+
+The concepts related to Collective Intelligence and Collective construction of Knowledge are essential for understanding the motivation to choose an approach that uses the knowledge of the contributors of Wikipedia, rather than experts. Finally, we present a description of Wikipedia and its features as it is central to the understanding the organization of this body of knowledge, as well as the possibilities and challenges that emerge from decoding its underlying structure. 
+
+
 
 \section{\hspace*{3pt}Natural Language Processing - NLP}
 
@@ -38,8 +40,6 @@ The limitations of unstructured resources are complementary to the limitations o
 
 Nowadays, most of the information in government, industry, business, and other institutions are stored electronically on the Web, in the form of semi-structured or restructured resources.
 
-
-
 In this context, the existence of \gls{ir} systems becomes indispensable to assist users in the process of locating information that is relevant in collections of unstructured or semi-structured data (e.g., web pages, documents, images, video, etc.).  
 
 
@@ -49,23 +49,25 @@ In this context, the existence of \gls{ir} systems becomes indispensable to assi
 
 A system can increase its precision when retrieving the users' information need if it indexes well-representing features of the text. As the collection of documents expand, automatic techniques that can extract these features become crucial.  \gls{tc} techniques can provide an output that can be representative of a research document, allowing for \gls{ir} systems to handle the indexing and retrieval process.
 
-
-
-\section{\hspace*{3pt}Information Extraction}
-
-\gls{ie} is the process of automatically extracting particular information entities or the relationship between different information entities from a source \cite{sarawagi2008information} and presenting it in a structured form. The source of information can be structured like a relational database, semi-structured like an HTML document or unstructured as free text from an academic paper. IE combines techniques from \gls{nlp}, lexical resources and semantic constraints to effectively provide automatic mining of documents.
+In order to reduce the complexity of the documents and make them easier to handle for \gls{ir} systems, the document have to be transformed from the full text version to a compact representation which describes the contents of the document \cite{meadow1992text}. This task is named document representation and it is crucial for \gls{tc} approaches. 
 
 \subsection{\hspace*{3pt}Documents Representation}
 
-Document representation has substantial importance when dealing with text classification.
+Document representation has substantial importance when dealing with \gls{tc}.
 
-Plain texts are usually not used directly by classification algorithms.  The documents are processed and transformed so that they can represent the semantic content of the text optimized for numeric processing.   
+Plain texts are usually not used directly by classification algorithms.  The documents are processed and transformed so that they can represent semantic content of the text optimized for numeric processing.   
 
 Most \gls{tc} methods use the \gls{bow} approach to represent documents. \cite{Lan:2009} \cite{Manning:2008}. The categorization takes into account the presence or the absence of key terms in the document-terms matrix that represents each document, as stated by Sebastiani \cite{Sebastiani:2002}.
 
 The reasons for using this approach is the simplicity, efficiency and relative effectiveness of the \gls{bow} paradigm.
 
 However, the \gls{bow} method fails to take into account relevant aspects of the text that is being represented. Semantic relationships between key terms are ignored, as well as the order in which the terms appear \cite{Gabrilovich:2005, Lan:2009}.
+
+The \gls{bow} approach ignores essential semantic relations between the terms \cite {Hu:2008}.
+
+In fact, elements like ``White House" or ``Bill Gates" are represented in the BOW as unrelated words. In analyzing the BOW representation of a given document in which the words Bill and Gates occur, one might suggest that the document talks about accounting, regarding the word Bill or construction because of the word Gates. For a computer program, it would be challenging to associate both words.
+Nevertheless, if the representation of the same document contains the set of words ``Bill Gates" as a term, it would be easier for the classifier to make a correct association.\cite{bekkerman2004using}.
+
 
 As a consequence, if two documents use different sets of keywords to describe the same topic, they can be classified as being of different categories, even though the keywords used by both are probably synonymous or semantically associated in some other form \cite {Hu:2009}.
 
@@ -75,93 +77,78 @@ Other approaches have explored features that are not directly extracted from the
 
 Numerous methods that use Feature Generation have achieved excellent results in Text Classification through the extraction of semantic relations such as synonymy, hyponymy and associative relations between concepts, present in Encyclopedias, Thesaurus, Ontologies, Web Pages and other sources. \cite{Gabrilovich:2005,Gabrilovich:2006,Hu:2008,Wang:2008, Wang:2009}.
 
+Since many texts used in the Web (search queries, tweets, questions, and answers) are short, unstructured and ambiguous, there is a need for a methodology capable of analyzing the short text semantically, detecting possible entities present in the sentence and making the disambiguation of terms, overcoming the gaps of tradition methods.
 
-\subsection{\hspace*{3pt}Features Representation}
-
-Terms, also called features\cite{Sebastiani:2002}, are indexable units used to identify the contents of the text document, and can be described at various levels of granularity, such as syllables or word (uni-grams ); several words (bigrams, trigrams or n-grams); phrases, or any other more elaborate semantic or syntactic unit \cite{Lan:2009}.
-
-The most commonly used feature representation TC is known as a set of terms representation or also as \gls{bow}, and considers only the words present in the text as terms.
- 
-However, this approach ignores essential semantic relations between the terms \cite {Hu:2008}.
-In fact, elements like ``White House" or ``Bill Gates" are represented in the BOW as unrelated words. In analyzing the BOW representation of a given document in which the words Bill and Gates occur, one might suggest that the document talks about accounting, regarding the word Bill or construction because of the word Gates. For a computer program, it would be challenging to associate both words.
-Nevertheless, if the representation of the same document contains the set of words ``Bill Gates" as a term, it would be easier for the classifier to make a correct association.\cite{bekkerman2004using}.
+In this context, to capture the semantic information related to the documents present on the Web, the approach described in this thesis employs the named entities found on the text as the bases of the representation of the documents.
 
 
-
-\subsection{\hspace*{3pt}Named Entity Recognition and Linking }
-
+\subsection{\hspace*{3pt}Named Entity Recognition}
 
 Grishman and  Sundheim \cite{grishman1996message} defined the task of \gls{ner}, as the task ``which involves identifying the names of all people, organizations and geographic locations in a text," also involving the identification of date expressions, hour, monetary values and percentages. 
-
 
 The named entity recognition task has been researched under several names over the years. For example Wikification \cite{Ratinov:2011}, Grounding \cite{leidner2003grounding} or Named-entity disambiguation \cite{hoffart2011robust}. The common approach can be generalized into following steps: find named entity mentions in given text, generate a set of candidates for each mention, select the best candidate for each mention, link the mention to the corresponding entry on Knowledge Base.
 
 In its most common form, the \gls{ner} task recognizes a predefined number of semantic categories, such as those defined in \cite{grishman1996message}. However, it has also been successfully applied to specific domains such as biology \cite{campos2012biomedical} and geology \cite{sobhana2010conditional}, where a more substantial number of domain-related categories are used. A prevalent form is the use of linguistic rules for the recognition of entities. In this approach the rules are manually coded from grammatical and domain knowledge, requiring specialization in both to obtain good results \cite{nadeau2007survey}. Moreover, the use of linguistic rules restricts its use to documents written in the language for which the rules were codified, making it impossible to use them in other languages.
 
-Another conventional approach to \gls{ner} is through the use of \gls{ml}.
+The \gls{ner} in a text goes through two phases: ii) the annotation of the grammatical classes of the text; and ii) the annotation of the names with the semantic category.
 
-The algorithms must be trained with previously annotated texts so that they learn through these annotations on how to identify if a specific sequence of words belongs to one of the categories annotated. 
-
-The annotations identify for each word in the text what it the grammatical class. If the word is an entity name, it identifies its type. The \gls{ner} in a text goes through two phases: ii) the annotation of the grammatical classes of the text; and ii) the annotation of the names with the semantic category.
-
+The annotations identify for each word in the text what is the grammatical class. If the word is an entity name, it identifies its type.
 The quality of the algorithm depends on the annotator's ability to identify the names correctly and is limited to the types of entities used in the corpus. 
 
-Supervised machine learning algorithms are expected to be able to generalize features found in the training text - known as Gold Corpus - in the form of patterns that when identified in other texts lead to the correct classification of entities. 
+Figure \ref{fig:obama-example} shows an example of the \gls{ner} task in a post extracted from a social network\footnote{\url{https://twitter.com/BarackObama/status/925526988659548160}}  The word ``Michelle" was identified as the Person Michelle Obama and the Words ``New York" were identified as the Place New York City. 
 
-For an algorithm to be able to learn these patterns it needs a large and diverse enough corpus. The size of the corpus interferes because the algorithm needs repetitions of a pattern to be able to recognize it. 
-
-According to Domingos \cite{domingos2012few}, diversity in training sets is necessary because if the algorithm is exposed to a substantial number of occurrences of the same pattern, it will not be able to identify small variations in this pattern and will not be able to differentiate classes with similar features.
-
-Ratinov and Roth \cite{Ratinov:2009} argue that \gls{ner} is a sequential prediction problem, solvable with typical models for this class of problems such as Hidden Markov Models, Conditional Random Fields, and Perceptrons.
-
+ 
+\begin{figure}[H]
+  \includegraphics[width=\linewidth]{obama}
+  \caption{Example of the \gls{ner} task on a text extracted from a social network.}
+  \label{fig:obama-example}
+\end{figure}
 
 
 \section{\hspace*{3pt}Automatic Text Classification}
 
-Based on Sebastiani\cite{Sebastiani:2002}, the automatic classification of documents through \gls{ml} approach requires the availability of an initial corpus  $\Omega=\{d_1,d_2, \cdots, d_{|\Omega|}\} \in D$ documents manually classified by a specialist, in a set of categories $C =\{c_1, c_2,\cdots c_{|C|}\}$. Thus, the result of the classification function for the objective $\Psi: D × C \mapsto \{T, F\}$ has its known values for every pair $(d_j, c_i) \in \Omega × C$
-
-The classification function $\Phi: D × C \mapsto \{T, F\}$ is derived from the learning process. This function maps documents into classes and is commonly called a classifier. Thus, the classification task seeks to approximate as much as possible the classification function $\Phi$ with the unknown value of the objective function $\Psi: D × C \mapsto \{T, F\}$ so that the result of $\Phi$ and $\Psi$ are similar. It is necessary to evaluate the effectiveness of the classifier by comparing the results obtained with the expected results of the function $\Psi$.
-
-In order to perform the training and evaluation of the classifier two distinct subsets of $\Omega$, $T_v$ and $T_e$, such that $T_v \cap T_e = \emptyset$:
 
 
+Automatic text classification is the assignment of natural language text to appropriate thematic categories, based on its content in a set o manually predefined categories.\cite{yang1999evaluation}. 
 
-\begin{itemize}
-\item \textbf{Training Set $T_v$} - used to derive the classifier Φ. The classifier is trained in learning the features of the training set which has already been manually classified.
+This task can be formalized as follows: let $D = \{d_1,d_2,d_3,\ldots\,d_n\}$ be a finite set of documents and $C = \{c_1,c_2,c_3,\ldots\,c_n\}$ a finite set of predefined categories.
+
+The problem is finding a function $f: D \times C \mapsto \mathbb{R}$ that assigns a score $s$ for each pair 
+$\{d_i, c_i\} \in  D \times C $, where the membership value of  $s$ specifies the degree of relevance of the category $c_i$ to the document $d_j$
+
+Two different types of text categorization task can be identified depending on
+the number of categories that could be assigned to each document. The first
+type, in which exactly one category is assigned to each $d_j \in D$, is named  as the single-class (or non-overlapping categories) text categorization task.
+The second type, in which any number of categories from zero to $|C|$ may be
+assigned to each $d_j \in D$, is called the multi-class (or overlapping categories) task
 
 
-\item \textbf{Test Set $T_e$} - used to evaluate the efficiency of the classifier $\Phi$. The class (or classes) assigned to each document $d_j$ belonging to the test set is previously known. This information is not taken into account by the classifier $\Phi$ created in the training stage. Each document $d_j  \in T_e$  is submitted to the classifier $\Phi$ which assigns one or more classes from $C$ to $d_j$, comparing the features present in $d_j$ with the features learned during the training stage.
-\end{itemize}
+
+According to Sebastiani\cite{Sebastiani:2002}, the definition of a text classifier can be summarized in the following steps:
+
+\begin{enumerate}
+\item  Acquisition of documents belonging to the domain (i.e.,
+a collection of documents in $D$);
+\item Creation of a vocabulary of $T$ terms  $\{w_1,w_2,w_3,\ldots\,w_T\}$ that will be used in the representation of documents. This step involves preprocessing of the text, such as lexical analysis (elimination of digits, punctuation marks), removal of stopwords (articles, prepositions), stemming of words (reduction of the word to its radical), among others text operations;
+
+\item Creation of the initial representation of documents with the definition of the set of attributes that describe the documents. Each attribute may be merely a Boolean value that indicates whether or not a given vocabulary term is present in the document (i.e., Boolean representation).  Each attribute can also correspond to a numerical weight associated to a given term, indicating the relevance of the term to the document being described. 
+
+\item Dimensionality Reduction, where the M most relevant attributes of the initial representation are selected (with M <T). This step can be done using different criteria for selection of attributes such as Information Gain, Mutual Information, $\tilde{\chi}^2$ statistic, and others \cite{Yang:1997}.
+
+\item Induction of the classifier from a training set. %At section \ref{sec:text-classifiers}, we will address some algorithms that can be used to generate classifiers;%
+
+\item Performance evaluation from a test set. Among the metrics used to evaluate classifiers, we can cite the precison, accuracy,  recall and F-measure. More about this evaluation metrics will be discussed in the description of the experiments that were carried out (chapter \ref{chapter:experiments}).
+
+\end{enumerate}
 
 
-The next step is the evaluation of each decision made by the classifier
-Φ for each pair $(d_j, c_i)$, which is compared with the expected decision $\Psi(d_j, c_i)$. The higher the number of decisions of $\Phi$ that are equal to the decisions of $\Psi$, the more effective is the classifier.
 
-A classifier $\Phi$ must have a good generalization capability, in order to eliminate errors caused by over-fitting. This problem occurs when a classifier adapts itself to particular features of the training documents, which can decrease the correctness rate for the classification of new
-documents.
 
 The methods that are used in \gls{tc} are frequently the same used in the more general area of \gls{ir}, where the goal is to find documents or sections within documents that are related to a particular query. \gls{tc} methods are essential to finding relevant information in many different tasks that deal with large volumes of text-based information. Some of the most traditional tasks where these methods are applied are: finding Internet pages on a given subject; finding answers to similar questions that have been answered before; classifying news by subject or newsgroup, among others. In each case, the goal is to assign the appropriate category or label to each document that needs to be classified.
 
-
-
-
-%The process of evaluating classifiers will be discussed further in  in the section \ref{sec:evaluation-of-classifiers}.
-
-\subsection{\hspace*{3pt}Types of Classification}
-
-Depending on the approach, the classification method can assign one class or more than one class to the documents. 
-
-If a document  $ d_j \in \Omega $  is assigned to only one class, it is called single-label, and when any number of classes from 0 to $|C|$ can be assigned to a document $d_j \in \Omega$, it is called multi-label. A single-label text classification problem can be further categorized into a  binary classification problem if only one class is assigned to the document.The single-label text classification problem becomes a multi-class problem if only N mutually exclusive classes are assigned to the document. 
-
-The binary approach is said to be a more general approach than the multi-class approach since binary classification can be employed in multi-class classification problems.  To make it possible, it is needed to transform a multi-class classification problem, with documents $(c_1, \cdots, c_{ |C|})$, in $|C|$ independent problems of binary classification over $c_i$ or $\overline{c_i}$, with $i=1,\cdots,|C|$. In this case, $\overline{c_i}$ is formed by documents that belong to all other classes and this methodology is named \textit{one against others}. This solution is only possible when the classes involved in the problem are stochastically independent, meaning that the classification of a document into one class does not require that the same document is also categorized in another one.
-
-
-\subsection{\hspace*{3pt}Text Classifiers}
-\label{sec:text-classifiers}
-
 Over the last few years, a vast number of algorithms have been proposed for \gls{tc} using machine learning. Among them, one can cite the naive Bayes \cite{mccallum1998comparison}, \gls{knn} \cite{Rijsbergen:1979}, \gls{svm} \cite{joachims1998text} and rule learning algorithms \cite{slattery1998combining}, which have been widely used. The researches that deal with document classification usually report performance comparison among the different algorithms available.
 
-
+The approach proposed in this thesis is a multi-label classification method, capable of assigning different degrees of membership for a document regarding each one of the categories available. Furthermore, multi-label classification problems can usually be reduced to a particular case of single-label classification\cite{Sebastiani:2002}. To make our results suitable for comparison with other approaches and with the judgment of humans, during the experiments we transformed the classification in a single-label assignment by considering only the categories with the highest degrees of membership. 
 
 
 \section{\hspace*{3pt} Collective Knowledge Construction}
@@ -318,24 +305,24 @@ These are just examples of small fragments in Wikipedia's categorization structu
 \end{figure}
 
 
-\subsection{\hspace*{3pt} DBpedia}
+%\subsection{\hspace*{3pt} DBpedia}
 
-As described directly on the DBpedia about page\footnote{url{https://wiki.dbpedia.org/about}} DBpedia is 
+%As described directly on the DBpedia about page\footnote{url{https://wiki.dbpedia.org/about}} DBpedia is a crowd-sourced community effort to extract structured content from the information created in various Wikimedia projects. This structured information resembles an open knowledge graph (OKG) which is available for everyone on the Web. A knowledge graph is a particular kind of database which stores knowledge in a machine-readable form and provides a means for information to be collected, organized, shared, searched and utilized.
 
-\begin{displayquote}
-\say{
-\textit{
-a crowd-sourced community effort to extract structured content from the information created in various Wikimedia projects. This structured information resembles an open knowledge graph (OKG) which is available for everyone on the Web. A knowledge graph is a particular kind of database which stores knowledge in a machine-readable form and provides a means for information to be collected, organized, shared, searched and utilized.}
-}
-\end{displayquote}
+%The DBpedia dataset has many advantages compared to the raw data from Wikipedia. Besides the more convenient access to the underlying Wikipedia data sources, it also provides a higher data quality. The higher quality is because the extraction framework embeds multiple steps commonly found in data mining applications, such as duplicate removal in the form of mapping redundant infobox properties to the same DBpedia property.
+%Therefore, the present work is focussed on using DBpedia for the entity named recognition and Linking, as well as for traversing entities' categories.
 
+%\subsubsection{\hspace*{3pt} SPARQL}
 
-The DBpedia dataset has many advantages compared to the raw data from Wikipedia. Besides the more convenient access to the underlying Wikipedia data sources, it also provides a higher data quality. The higher quality is because the extraction framework embeds multiple steps commonly found in data mining applications, such as duplicate removal in the form of mapping redundant infobox properties to the same DBpedia property.
-Therefore, the present work is focussed on using DBpedia for the entity named recognition and Linking, as well as for traversing entities' categories.
+%\gls{sparql} is a query language capable of retrieving and manipulating data stored in the \gls{rdf} format that is the basis of the OWL language. \gls{rdf} is a labeled and directed data format used to represent information on the Web \cite{prud2008sparql}. 
+
+%In the context of this research, our approach exploits a small part of what the SPARQL language can provide. We  navigate in the DBpedia hierarchy to retrieve broader semantic relations between the entities and its categories. 
 
 
-\subsubsection{\hspace*{3pt} SPARQL}
+\subsection{The Wikipedia Category Graph}
 
-\gls{sparql} is a query language capable of retrieving and manipulating data stored in the \gls{rdf} format that is the basis of the OWL language. \gls{rdf} is a labeled and directed data format used to represent information on the Web \cite{prud2008sparql}. 
+Regarding the reduction of dimensionality, our proposed method consists of navigating in the \gls{wcg} from each category extracted related to the entities obtained from the text-based resources towards the top of the graph by all the shortest paths between the category and a set of top-level categories. 
 
-In the context of this research, our approach exploits a small part of what the SPARQL language can provide. We  navigate in the DBpedia hierarchy to retrieve broader semantic relations between the entities and its categories. 
+The \gls{wcg} mentioned above is a massive set of almost  1,500 categories, describing a broad domain of knowledge and ranging from the very precise, such as ``Lists of Canadian network television schedules,” to the very general, such as ``information.” The categories are connected by hypernym relationships, with a child category having an ``is-a” relationship to its parents. However, the graph is not strictly hierarchic: there exist shortcuts in the connections (i.e., starting from one child category and going up two different paths of different lengths to reach the same parent category) as well as loops (i.e., beginning from one child category and going up a path to reach the same child category again).
+
+Given the complexity and dimension of the \gls{wcg}, a graph-theoretic analysis was carried out and is described in chapter \ref{chapter:graph}. The primary goal of this analysis is The description of Wikipedia the understanding of the organization of this body of knowledge, as well as the possibilities and challenges that emerge from decoding this underlying structure. The description of the topology of the graph also enables to estimate whether graph-based techniques for semantic analysis and information retrieval can be applied to the \gls{wcg} or not.

@@ -33,44 +33,25 @@ Text classification allows users to find desired information faster by searching
 
 
 
-
 \section{\hspace*{3pt}Problem Statement}
 
 
 According to Sebastiani \cite{Sebastiani:2002}, the first efforts to automate the classification of digital documents were made in the 1960s. However, until the 1980s, a semiautomatic technique based on knowledge engineering was used for document classification.
 
 Although this approach can be precise, semiautomatic document classification has a significant limitation concerning the acquisition of knowledge for the construction of the classifier. This limitation is primarily on the need to have at least two human experts involved in the process: a domain expert, with the ability to classify documents in the predefined set of classes and a knowledge engineer, able to encode the classification in a programming language as a set of rules. This approach is not flexible because if there are changes in the classification system or if a new set of classes is created, the two experts should be involved again to adjust the rules and the classifier.
-In the early 1990s, fully automated approaches started to be used to classify documents in academic researches. \gls{ml} techniques based on statistics and probabilities are used to automatically generate a classifier that can relate a set of characteristics present in the various documents of a training set with the classes of those documents started being tested.
-
 
 Text classification can be defined as the association of documents to predefined classes. When a document is associated with a single class among the available, it is said that it is a single-label classification problem. When a document can be associated with more than one category at a time, it is said to be a multi-label classification. 
-
-The approach proposed in this thesis is a multi-label classification method, capable of assigning different degrees of membership for a document regarding each one of the categories available. Furthermore, multi-label classification problems can usually be reduced to a particular case of single-label classification\cite{Sebastiani:2002}. To make our results suitable for comparison with other approaches and with the judgment of humans, during the experiments we transformed the classification in a single-label assignment by considering only the categories with the highest degrees of membership.
-
-
-Despite all efforts to improve algorithms so that they can generate effective classifiers, it is observed that the effectiveness of classifiers is also strongly dependent on how documents are represented \cite{Gabrilovich:2006, bekkerman2004using, supreethi2010novel}, or quality of the textual components used as information in the training process for classification. These elements are called document features. The most common features used for \gls{tc} are the terms of the documents. In this way, the more you use features that are relevant to classification in the document representation, the higher the chances of having an increase in the effectiveness of the method.
 
 
 To formally define the problem of automatically assigning categories to documents let $D = \{d_1,d_2,d_3,\ldots\,d_n\}$ be a finite set of documents and $C = \{c_1,c_2,c_3,\ldots\,c_n\}$ a finite set of predefined categories.
 The problem is finding a function $f: D \times C \mapsto \mathbb{R}$ that assigns a score $s$ for each pair 
 $\{d_i, c_i\} \in  D \times C $, where the membership value of  $s$ specifies the degree of relevance of the category $c_i$ to the document $d_j$
 
-According to Sebastiani\cite{Sebastiani:2002}, the definition of a text classifier can be summarized in the following steps:
 
-\begin{enumerate}
-\item  Acquisition of documents belonging to the domain (i.e.,
-a collection of documents in $D$);
-\item Creation of a vocabulary of $T$ terms  $\{w_1,w_2,w_3,\ldots\,w_T\}$ that will be used in the representation of documents. This step involves preprocessing of the text, such as lexical analysis (elimination of digits, punctuation marks), removal of stopwords (articles, prepositions), stemming of words (reduction of the word to its radical), among others text operations;
 
-\item Creation of the initial representation of documents with the definition of the set of attributes that describe the documents. Each attribute may be merely a Boolean value that indicates whether or not a given vocabulary term is present in the document (i.e., Boolean representation).  Each attribute can also correspond to a numerical weight associated to a given term, indicating the relevance of the term to the document being described. 
+Despite all efforts to improve algorithms so that they can generate effective classifiers, it is observed that the effectiveness of classifiers is also strongly dependent on how documents are represented \cite{Gabrilovich:2006, bekkerman2004using, supreethi2010novel}, or quality of the textual components used as information in the training process for classification. These elements are called document features. The most common features used for \gls{tc} are the terms of the documents. In this way, the more you use features that are relevant to classification in the document representation, the higher the chances of having an increase in the effectiveness of the method.
 
-\item Dimensionality Reduction, where the M most relevant attributes of the initial representation are selected (with M <T). This step can be done using different criteria for selection of attributes such as Information Gain, Mutual Information, $\tilde{\chi}^2$ statistic, and others \cite{Yang:1997}.
 
-\item Induction of the classifier from a training set. %At section \ref{sec:text-classifiers}, we will address some algorithms that can be used to generate classifiers;%
-
-\item Performance evaluation from a test set. Among the metrics used to evaluate classifiers, we can cite the precison, accuracy,  recall and F-measure. More about this evaluation metrics will be discussed in the description of the experiments that were carried out (chapter \ref{chapter:experiments}).
-
-\end{enumerate}
 
 
 \section{\hspace*{3pt}Goals of this Thesis}

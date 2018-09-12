@@ -1,12 +1,9 @@
 \chapter{\hspace*{3pt} Topology Description of the Wikipedia Category Graph}
 \label{chapter:graph}
 
-
-A graph-theoretic analysis of the \gls{wcg} was carried out to describe the topology of the graph and to estimate whether graph-based techniques for semantic analysis and information retrieval can be applied to the Wikipedia Category Graph.
-
 The inspiration for this section comes from the work of Zesch and Gurevych\cite{zesch2007analysis}, where they showed that the \gls{wcg} is a scale-free, small-world graph, like other semantic networks such as WordNet or Roget’s thesaurus. They concluded that the \gls{wcg} could be used for \gls{nlp} tasks, where other semantic networks have been traditionally employed\cite{zesch2007analysis}.
 
-Although their work has been useful in supporting many types of research in the recent years, the analysis was performed in a German Wikipedia version of 2007. The idea behind our updated review is to understand if the latest version of Wikipedia in English also presents the same characteristics. We also expect to obtain insights on how the structure of the \gls{wcg} can influence the proposed method and guide the development of future work.
+Although their work has been useful in supporting many types of research in the recent years, the analysis was performed in a German Wikipedia version of 2007. The idea behind our updated review is to understand if the latest version of Wikipedia in English also presents the same characteristics. We also expect to obtain insights on how the structure of the \gls{wcg} can influence the proposed method and guide the development of future work. 
 
 
 
@@ -149,9 +146,6 @@ Formally, a graph $G$ with $n$ nodes and $m$ vertices is said to be a small-worl
 
 In small-world graphs, the distance between any pair of nodes is relatively short while the level of transitivity, or clustering. is relatively high.
 
-
-
-\subsubsection{\hspace*{3pt} Clustering Coefficient}
 
 Another important metric for understanding the topology of a graph is its clustering coefficient. The clustering coefficient of a vertex represents the probability that if two of its neighbors are randomly chosen, they will also be connected by an edge. More precisely, if a vertex has $t$ neighbors, then there are $t(t-1)/2$ possible edges that connect those neighbors. The local clustering coefficient of a vertex is the fraction of the edges that actually appear in the graph (or 0 if the vertex has degree 0 or 1). Given the graph $G= (v,E)$ and a vertex $v \in V$, the clustering coefficient of $v$ is 
 

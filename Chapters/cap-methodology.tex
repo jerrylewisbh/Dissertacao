@@ -4,7 +4,7 @@
 Automatic text classification consists of automatically assigning a predefined label to textual documents. The use of text classification can be observed in (i) organization through routing, filtering and metadata assignments; (ii) analysis, through the statistics of the labels assigned to the documents or through descriptive and predictive analyzes; and (iii) knowledge extraction, through a set of rules or values that summarize the patterns present in the collection of documents. 
 Moreover, information retrieval engines which correspond to many of the use of the Internet for locating information and gaining knowledge, make use of text classification algorithms to rank the most relevant documents according to a user's query ~\cite{Manning:2008}.
 
-To perform automatic text classification, expert systems or machine learning algorithms may be used. In the first case, one or more domain experts create a set conditional rules based on the presence or frequency of a set of words or sentences that define the class of a document. However, manually generated rules are complicated to create or update for different applications or domains and are dependent on the presence and effort of domain experts or knowledge engineers~\cite{Manning:2008}. 
+To perform automatic text classification, expert systems or machine learning algorithms may be used. In the first case, one or more domain experts create a set of conditional rules based on the presence or frequency of a set of words or sentences that define the class of a document. However, manually generated rules are complicated to create or update for different applications or domains and are dependent on the presence and effort of domain experts or knowledge engineers~\cite{Manning:2008}. 
 
 For that reason, automatic text classification is one of the most studied and used areas to accomplish the tasks mentioned above. 
 
@@ -13,7 +13,7 @@ This chapter presents in detail the steps of our approach for the extraction and
 
 \section{\hspace*{3pt} Approach} \label{sec:approach}
 
-The rich structure of the Wikipedia Category Graph has contributed to make it a large and meaningful semantic taxonomies. That said, our main goal is to take advantage of this body of knowledge to automatically categorize any text-based content on the Web following the collective knowledge of Wikipedia contributors. A processing chain to generate a generic categorization was developed based on three steps: 
+The rich structure of the Wikipedia Category Graph has contributed to make it a large and meaningful semantic taxonomy. That said, our main goal is to take advantage of this body of knowledge to automatically categorize any text-based content on the Web following the collective knowledge of Wikipedia contributors. A processing chain to generate a generic categorization was developed based on three steps: 
 
 \begin{enumerate}
 \item Text annotation;
@@ -31,7 +31,7 @@ When dealing with the Web of Documents, we are primarily working with unstructur
 
 In the context of this thesis, we chose DBpedia as our Knowledge Base because it covers many domains (Science, Arts, Politics, History, Geography, Health and Nature, among others). Another reason is its constant evolution. Since the knowledge in DBPedia is extracted from Wikipedia,  the Knowledge Base is also continuously updated by the contributors. DBpedia is also available in different languages and can be accessed either by an endpoint\footnote{\url{http://dbpedia.org/sparql/}} or being installed in a local machine, making it faster to process a vast amount of data.
 
-Based on a comparison made by Gangemi\cite{gangemi2013comparison} we decided to used  DBpedia Spotlight tool\footnote{\url{http://dbpedia-spotlight.github.io/demo/}} for entity extraction and linking to DBpedia. Even though there are some options (such as AIDA\footnote{\url{https://github.com/codepie/aida}} or Alchemy\footnote{\url{https://www.ibm.com/watson/alchemy-api.html}}) that outperform Spotlight for the task of \gls{ner}, they fail to meet some criteria. For instance, AIDA is directly linked to YAGO and Alchemy is a paid API with limited access.  
+Based on a comparison made by Gangemi\cite{gangemi2013comparison} we decided to use the DBpedia Spotlight  tool\footnote{\url{http://dbpedia-spotlight.github.io/demo/}} for entity extraction and linking to DBpedia. Even though there are some options (such as AIDA\footnote{\url{https://github.com/codepie/aida}} or Alchemy\footnote{\url{https://www.ibm.com/watson/alchemy-api.html}}) that outperform Spotlight for the task of \gls{ner}, they fail to meet some criteria. For instance, AIDA is directly linked to YAGO and Alchemy is a paid API with limited access.  
 
 
 DBpedia Spotlight is a system for automatically annotating text documents with DBpedia URIs. It contains Wikipedia's encyclopedic knowledge of about 3.5 million resources, where nearly half of the knowledge base is classified according to the following ontologies: people, organizations or places\cite{Mendes:2011}. 
@@ -188,13 +188,13 @@ In this last step, as detailed in section \ref{sec:doc-representation}, we gener
  
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{graph-example}
-  \caption{Induced graph containing all shortest paths from the categories found and described in table in \ref{tab:entities-categories} and ``Main topic classifications" (on the right of the graph)}
+  \caption{An induced graph containing all shortest paths from the categories found and described in table \ref{tab:entities-categories} and ``Main topic classifications" (on the right of the graph)}
   \label{fig:graph-example}
 \end{figure}
 
 
 The vector generated for this examples is shown in table \ref{tab:vector}. Note that this is the representation of the document based only on a small excerpt. 
-We can infer that this document is strongly related to History, Humanities, Law, and Culture, and also has some weaker relatedness to Society, Geography, Philosophy, and People. Bellow we present one random example of path for each top-level category that contributed for the document representation.
+We can infer that this document is strongly related to History, Humanities, Law, and Culture, and also has some weaker relatedness to Society, Geography, Philosophy, and People. Bellow we present one random example of a path for each top-level category that contributed to the document representation.
 
 
 \begin{itemize}
@@ -228,7 +228,7 @@ Korea $\rightarrow$ Divided regions $\rightarrow$ Political geography $\rightarr
 % \usepackage{booktabs}
 \begin{table}[H]
 \centering
-\caption{19-sized vector representing the document based on the top-level categories of \gls{wcg}}
+\caption{The 19-sized vector representing the document based on the top-level categories of \gls{wcg}}
 \label{tab:vector}
 \begin{tabular}{@{}ll@{}}
 \toprule
@@ -265,7 +265,7 @@ In the scope of this thesis, finding the paths between entities and a set of top
 
 Therefore, we needed a way of representing the available information about the Wikipedia structure as a graph. The Wikipedia Category Graph consists of Wikipedia pages with the “Category:” prefix such as “Category:Law”. The graph is extracted by finding links between category pages. In other words, a category page is liked to another category page that is broader in scope.
 
-To perform this task, we obtained a dump of the files enwiki-latest-page.sql, enwiki-latest-category.sql and enwiki-latest-categorylinks.sql, of October 2016 \footnote{\url{https://dumps.wikimedia.org/enwiki/20161020\/}}.
+To perform this task, we obtained a dump of the files enwiki-latest-page.sql, enwiki-latest-category.sql and enwiki-latest-categorylinks.sql, in October 2016 \footnote{\url{https://dumps.wikimedia.org/enwiki/20161020\/}}.
 
 These files consist the structure of Wikipedia represented in a MySQL relational database.
 
@@ -285,7 +285,7 @@ cl\_to              & Stores the name (excluding namespace prefix) of the desire
 cl\_sortkey         & Stores the title by which the page should be sorted in a category list.                                       \\
 cl\_timestamp       & Stores the time at which that link was last updated in the table.                                             \\
 cl\_sortkey\_prefix & either an empty string if a page is using the default sortkey or a human readable version of cl\_sortkey.     \\
-cl\_collation       & What collation is in used.                                                                                    \\
+cl\_collation       & What collation is in use.                                                                                    \\
 cl\_type            & What type of article is this (file, subcat (subcategory) or page (normal page)).                              \\ \bottomrule
 \end{tabular}
 \end{adjustbox}
@@ -300,7 +300,7 @@ Considering the goal of this process is to represent the underlying Wikipedia ca
 Even though only the category graph is needed, it was necessary to extract the page file as well, since the identifier of the categories refers not to the categories themselves, but to the page about the categories. For this step, a parser was developed in python. First, the file containing all the pages of Wikipedia is scanned and, through a regular expression, the data is filtered.
 
 The output is a CSV file with three fields: page identifier, page title, and namespace. Namespaces are a Wikipedia internal classification system to identify what a page refers to, such as an article, a category, user page, or other classifications. Articles are identified with namespace 0 and categories with namespace 14, for example.
-The second step is to go through the file that corresponds to the categories of Wikipedia. The output of this step is a CSV file with two properties: page identifier and category title. From this file, it is possible to link the categories and the corresponding pages. The third and final step of this step is the extraction of links between categories. The data is extracted from the file of the enwiki-latest-categorylinks.sql file, and the output is a csv file with two properties: page identifier for the source category and page identifier for destination category.
+The second step is to go through the file that corresponds to the categories of Wikipedia. The output of this step is a CSV file with two properties: page identifier and category title. From this file, it is possible to link the categories and the corresponding pages. The third and final step of this step is the extraction of links between categories. The data is extracted from the file of the enwiki-latest-categorylinks.sql file, and the output is a csv file with two properties: page identifier for the source category and page identifier for the destination category.
 
 Administrative categories are used for Wikipedia internal organization and mantaining. They were ignored during processing and are not in the final files. Examples of these categories include, but are not limited to, categories that begin with \textit{Articles\_needing\_} and \textit{WikiProject\_}, named hidden categories.
 
@@ -308,15 +308,15 @@ Administrative categories are used for Wikipedia internal organization and manta
 These categories provide a tool for grouping pages with features in common so that publishers can quickly identify where improvements are needed. Although these categories are essential for the maintenance and administration of the encyclopedia, they are not relevant to end users and were removed in the context of the work for two reasons: 1) They add complexity to the structure of the graph 2) They do not semantically describe articles associated to them and therefore do not add relevant information to the paths.
 
 
-The ideal paths between a set of categories has no hidden categories. Thus, the hidden categories must be removed in such a way that the information is not lost because a hidden category can be a subcategory of a visible category or they can have visible categories as their subcategories
+The ideal paths between a set of categories have no hidden categories. Thus, the hidden categories must be removed in such a way that the information is not lost because a hidden category can be a subcategory of a visible category or they can have visible categories as their subcategories
 
 <EXAMPLE OF HIDDEN CATEGORIES REMOVAL HERE>
 
-After processing the Wikipedia dump files,  it is possible to generate the complete graph of categories. First, we import all the pages referring to categories in the Neo4J, and then the relations between them are imported. The generated graph has only a $Category$ concept with the $categoryName$ and $categoryID$ properties and a $SUBCATEGORY\_OF$ relationship type, with no properties.
+After processing the Wikipedia dump files, it is possible to generate the complete graph of categories. First, we import all the pages referring to categories in the Neo4J, and then the relations between them are imported. The generated graph has only a $Category$ concept with the $categoryName$ and $categoryID$ properties and a $SUBCATEGORY\_OF$ relationship type, with no properties.
 
 The example below illustrates how information retrieval works in a Neo4J graph.
 
-The example returns all nodes of type$ Category$  that are connected to another node of type $Category$ that have the property $CategoryName$ with the value equals to Carnivores for the $SUBCATEGORY_OF$ property. In this case, all subcategories of Carnivores are retrieved.
+The example returns all nodes of type $Category$  that are connected to another node of type $Category$ that has the property $CategoryName$ with the value equals to Carnivores for the $SUBCATEGORY_OF$ property. In this case, all subcategories of Carnivores are retrieved.
 
 \begin{verbatim}
 MATCH (a: Category) - [r: SUBCATEGORY_OF] ->

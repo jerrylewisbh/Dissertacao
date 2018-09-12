@@ -1,9 +1,10 @@
 \chapter{\hspace*{3pt} Topology Description of the Wikipedia Category Graph}
+\label{chapter:graph}
 
 
 A graph-theoretic analysis of the \gls{wcg} was carried out to describe the topology of the graph and to estimate whether graph-based techniques for semantic analysis and information retrieval can be applied to the Wikipedia Category Graph.
 
-The inspiration for this section comes from the work of Zesch and Gurevych\cite{zesch2007analysis}, where they showed that the \gls{wcg} is a scale-free, small-world graph, like other semantic networks such as WordNet or Roget’s thesaurus. They concluded that the \gls{wcg} can be used for \gls{nlp} tasks, where other semantic networks have been traditionally employed\cite{zesch2007analysis}.
+The inspiration for this section comes from the work of Zesch and Gurevych\cite{zesch2007analysis}, where they showed that the \gls{wcg} is a scale-free, small-world graph, like other semantic networks such as WordNet or Roget’s thesaurus. They concluded that the \gls{wcg} could be used for \gls{nlp} tasks, where other semantic networks have been traditionally employed\cite{zesch2007analysis}.
 
 Although their work has been useful in supporting many types of research in the recent years, the analysis was performed in a German Wikipedia version of 2007. The idea behind our updated review is to understand if the latest version of Wikipedia in English also presents the same characteristics. We also expect to obtain insights on how the structure of the \gls{wcg} can influence the proposed method and guide the development of future work.
 
@@ -25,19 +26,19 @@ A graph is said to be dense when the number of existing edges is close to the nu
 \section{\hspace*{3pt} Degree Analysis}
 
 
-If we observe a node in a directed graph, it is possible to see edges converging in the node and edges diverging from the node. An incoming edge and an outgoing edge can mean very different things, but in the Wikipedia Category Graph they both denote the direction of the relationship ``is subcategory of". 
+If we observe a node in a directed graph, it is possible to see edges converging in the node and edges diverging from the node. An incoming edge and an outgoing edge can mean very different things, but in the Wikipedia Category Graph they both denote the direction of the relationship ``is a subcategory of". 
 
 The indegree of node $v$ is the total number of connections onto node $v$.
-On the other side, the outdegree of node $v$ is the total number of connections coming out from node.
+On the other side, the outdegree of node $v$ is the total number of connections coming out from the node.
 
 In both cases, the sum is the result of all other nodes $j$ in the graph. It is also possible to sum indegrees and outdegrees to get the total number of connections of a node, which constitutes its total degree.
 
 The average indegree, outdegree and total degree for each vertex in the Wikipedia dataset are $2.78\pm0.142$, $2.78\pm0.001$ and $5.573\pm0.001$ respectively. 
 
-\subsubsection{\hspace*{3pt}  Degree Distribution}
+\subsection{\hspace*{3pt}  Degree Distribution}
 
 Large graphs such as the \gls{wcg} can be very complex structures, as the connections among the nodes can present complicated patterns. 
-While studying complex networks, it is common to develop simplified measures that capture some elements of the structure. In this context, the degree distribution of complex network is often described. 
+While studying complex networks, it is common to develop simplified measures that capture some elements of the structure. In this context, the degree distribution of a complex network is often described. 
 
 The degree distribution of a graph is the probability distribution that a randomly chosen node will have a degree $k$. 
 
@@ -91,7 +92,7 @@ out-degree & 4,5603 & 12         \\ \bottomrule
 \label{tab:power-law-params}
 \end{table}
 
-Based on the analysis of the \gls{wcg} degree distribution, as presented by the plot in figure \ref{fig:in-and-out-degree} and the exponent displayed in table \ref{tab:power-law-params}, it is demonstrated that the Wikipedia Category Graph nodes follow fit in a power-law distribution, hence we can consider it as a scale-free network.  
+Based on the analysis of the \gls{wcg} degree distribution, as presented by the plot in figure \ref{fig:in-and-out-degree} and the exponent displayed in table \ref{tab:power-law-params}, it is demonstrated that the Wikipedia Category Graph nodes follow a power-law distribution, hence we can consider it as a scale-free network.  
 
 \subsubsection{\hspace*{3pt} Assortativity}
 
@@ -124,7 +125,7 @@ Given that the \gls{wcg} is not completely connected, to avoid infinity, we calc
 
 \begin{figure}[H]
   \includegraphics[width=\linewidth]{path_frequency2}
-  \caption{Shortest path length distribution on th Wikipedia Category Graph}
+  \caption{Shortest path length distribution on the Wikipedia Category Graph}
   \label{fig:path-distribution}
 \end{figure}
 
@@ -177,3 +178,9 @@ WCG & 20,9343 & 19,5389 & 0,003638604 & 2,03E-06 \\ \bottomrule
 \end{table}
 
 Therefore, the Wikipedia Category Graph exhibits a small-world behavior, with an average shortest path length close to that of a random network with the same size.
+
+
+
+%Most real-world networks, however, especially social networks, do not have homogeneous distribution of degree that regular or random networks have. The number of connections each node has in most networks varies greatly and they are positioned somewhere between regular and random networks. In fact, Watts and Strogatz (1998) proposed a model where the connections between the nodes in a regular graph were rewired with a certain probability. The resulting graphs were between the regular and random in their structure and are referred to as small-world (SW) networks. SW networks are very close structurally to many social networks in that they have a higher clustering and almost the same average path than the random networks with the same number of nodes and edges. SW networks usually have high modularity (groups of the nodes that are more densely connected together than to the rest of the network). The graph above shows a different type of a SW network though, the one that’s generated by rewiring the connections from within the interconnected modules to between these modules – an architecture that is often found in cortical maps (neural networks in the brain).
+
+%Finally, there’s a large class of so-called scale-free (SF) networks characterized by a highly heterogeneous degree distribution, which follows a ``power-law” (Barabasi & Albert 1999). They are called scale-free, because zooming in on any part of the distribution doesn’t change its shape: there is a few, but significant number of nodes with a lot of connections and there’s a trailing tail of nodes with a very few connections at each level of magnification. Such networks are typical for the structure of the world wide web, semantic maps, electronic circuits. These structure combine heterogeneity and randomness, they can have low or high modularity and many SW networks are also scale-free.

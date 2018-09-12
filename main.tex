@@ -45,7 +45,8 @@
              BoldItalicFont=courbi]{cour}
 
 
-\linespread{1.5} % espaço entre linhas de 1.5
+%\linespread{1.5} % espaço entre linhas de 1.5
+\doublespacing
 \setlength{\parskip}{10pt} % espaço entre parágrafos
 \setcounter{secnumdepth}{3} % habilita a variável \thesubsubsection
 \setcounter{tocdepth}{3} % Índice até subsubsection
@@ -66,8 +67,7 @@
     	linkcolor=black,          	% color of internal links
     	citecolor=black,        		% color of links to bibliography
     	filecolor=black,      		% color of file links
-		urlcolor=black,
-}
+		urlcolor=black}
 
 \graphicspath{ {imgs/} }		% Local onde as imagens serão procuradas
 
@@ -135,22 +135,30 @@
 \usepackage{ltxtable}
 \makeglossaries
 
+
+\hyphenation{wiki-pe-dia} % like en-cy-clo-pe-dia
+
 \begin{document}
  	
     \pagestyle{empty}
     %\include{Pre/capa}
     %\include{Pre/folhaDeRosto}
-    %\include{Pre/fichaCatalografica}
+    \include{Pre/fichaCatalografica}
     \pagestyle{plain}
     \pagenumbering{roman}
     %\include{Pre/dedicatoria}
     %\include{Pre/agradecimento}
-    %\include{Pre/abstract}
-    %\include{Pre/resumo}
+    \include{Pre/abstract}
+    \include{Pre/resumo}
+    
+\begingroup
+    \singlespacing
     \include{Lists/indiceTexto}
     \include{Lists/indiceFiguras}
     \include{Lists/indiceTabelas}
     \include{Lists/listaNomenclaturas}
+\endgroup
+
     \pagestyle{headings}
     \pagenumbering{arabic}
     
@@ -165,6 +173,9 @@
     \input{Chapters/cap-conclusion}
 	\input{appendices}
 	\bibliographystyle{acm-unirio}
+\begingroup
+    \singlespacing
 	\bibliography{referencias}
+\endgroup
 	
 \end{document}

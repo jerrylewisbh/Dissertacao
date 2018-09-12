@@ -1,3 +1,32 @@
-\chapter{\hspace*{3pt} Conclusion}
+\chapter{\hspace*{3pt} Final Remarks, Limitations and Future Work}
 \label{chapter:conclusion}
 
+This is the final chapter of our thesis and covers our conclusion for the project and desirable further works. The chapter starts with the concluding remarks regarding our project, before mentioning some limitations and the desired future works that might improve the classification results of our method.
+
+\section{\hspace*{3pt}  Final Remarks}
+The primary objective of the research conducted and described in this thesis is the construction of a method for automatic classification of textual resources in the Web that does not depend on the effort of domain experts.
+
+The central motivation to reduce the need for experts to mediate the classification process is the fact that the amount of information generated on the Web grows as more people use the platform.
+
+As a consequence, most efforts to classify and organize documents manually on the Web have proven to be unviable and have become extinct.
+
+On the other hand, there is a great movement of people who come together to create and organize content on the Web collaboratively.
+
+Wikipedia, the largest existing online encyclopedia is an outstanding example of this effort. In addition to creating articles, users are responsible for the categorization system, a complex structure. 
+
+There are a finite number of categories that represent the whole Wikipedia content. These categories, as well as their subcategories, are not fixed and are maintained and curated by Wikipedia users. 
+
+This form of classification has the advantage of being dynamic and representing the way people organize the areas of knowledge, so that any change in facts, people, places, among others, it is quickly edited by contributors.
+
+In this context, we decided to create a classifier based on the top-level categories of Wikipedia because it is easy to understand for regular users' and because it can be easily modified to serve specific purposes.
+
+Given the complex structure of the Wikipedia category system, we decided to represent it in the graph, whose nodes represent the categories and the edges represent the ``is-sub-category-of" relationships.
+
+For presenting a complex structure with several categories, many links and cycles, it was necessary to perform an analysis of the topology of the category graph of Wikipedia, in order to verify if this structure is suitable for the application in our method.
+
+In chapter  \ref{chapter:graph} we describe the outcomes of this analyses, where we found out that the Wikipedia Category structure is similar to other semantic networks often used for \gls{nlp} applications. It was verified that the Wikipedia Category Graph 
+
+\section{\hspace*{3pt}  Limitations}
+
+
+\section{\hspace*{3pt}  Future Work}

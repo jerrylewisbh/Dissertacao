@@ -6,8 +6,8 @@
 This chapter introduces the theoretical concepts used to contextualize the research described in this thesis.
 
 The concepts related to Collective Intelligence and Collective construction of Knowledge are essential for understanding the motivation to choose an approach that uses the knowledge of the contributors of Wikipedia, rather than experts. The description of Wikipedia and its features is central to the understanding of the organization of this body of knowledge, as well as the possibilities and challenges that emerge from decoding  the underlying structure. 
-The concepts related to Information Retrieval and Extraction are essential to understand the tasks applied in the proposed solution to extract the entities and the categories from the text-resources.
-We also provide some general information about natural language processing (NLP) techniques that are applicable for our categorization method. 
+The concepts related to Information Retrieval and Extraction are essential to understanding the tasks applied in the proposed solution to extract the entities and the categories from the text-resources.
+We also provide some general information about natural language processing (NLP) techniques that are applicable to our categorization method. 
 This chapter ends with an overview of the concept and methods for the automatic classification of textual resources, as it is the primary goal of the research presented in this thesis. 
 
 \section{\hspace*{3pt}Natural Language}
@@ -43,7 +43,7 @@ The most common structured resources are:
 
 Unstructured resources are collections of texts that have no formalized knowledge and are machine readable only as sequences of characters and words. Different statistical models can extract knowledge from unstructured collections, and the massive amount of texts available on the \gls{www} enables the construction of knowledge bases of excellent coverage. However, they are limited by the lack of texts that demonstrate common-sense knowledge \cite{hovy2013collaboratively}. Also, statistical models are not able to issue knowledge with quality equivalent to the resources built by specialists.
 
-The authors conclude that the limitations of unstructured resources are complementary to the limitations of structured resources. While unstructured resources enable broad coverage with low quality, structured resources have high quality but low coverage. Semistructured resources constructed collaboratively on the \gls{www} encode the knowledge voluntarily made available by users of these resources, covering different areas of knowledge and having quality comparable to that obtained from specialists. The semi-structured resources mentioned by the authors are Wiktionary, Flickr, Twitter, Yahoo! Answers and, with greater emphasis the Wikipedia \cite{hovy2013collaboratively}.
+The authors conclude that the limitations of unstructured resources are complementary to the limitations of structured resources. While unstructured resources enable broad coverage with low quality, structured resources have high quality but low coverage. Semistructured resources constructed collaboratively on the \gls{www} encode the knowledge voluntarily made available by users of these resources, covering different areas of knowledge and having quality comparable to that obtained from specialists. The semi-structured resources mentioned by the authors are Wiktionary, Flickr, Twitter, Yahoo! Answers and, with greater emphasis on the Wikipedia \cite{hovy2013collaboratively}.
 
 
 
@@ -74,7 +74,7 @@ Most \gls{tc} methods use the \gls{bow} approach to represent documents. \cite{L
 
 The reasons for using this approach is the simplicity, efficiency and relative effectiveness of the \gls{bow} paradigm.
 
-However, the \gls{bow} method fails to take into account relevant aspects of the text being represented. Semantic relationships between key terms are ignored, as well as the order in which the terms appear \cite{Gabrilovich:2005, Lan:2009}.
+However, the \gls{bow} method fails to take into account relevant aspects of the text that is being represented. Semantic relationships between key terms are ignored, as well as the order in which the terms appear \cite{Gabrilovich:2005, Lan:2009}.
 
 As a consequence, if two documents use different sets of keywords to describe the same topic, they can be classified as being of different categories, even though the keywords used by both are probably synonymous or semantically associated in some other form \cite {Hu:2009}.
 
@@ -118,7 +118,7 @@ The named entity recognition task has been researched under several names over t
 q'
 In its most common form, the \gls{ner} task recognizes a predefined number of semantic categories, such as those defined in \cite{grishman1996message}. However, it has also been successfully applied to specific domains such as biology \cite{campos2012biomedical} and geology \cite{sobhana2010conditional}, where a more substantial number of domain-related categories are used. A prevalent form is the use of linguistic rules for the recognition of entities. In this approach the rules are manually coded from grammatical and domain knowledge, requiring specialization in both to obtain good results \cite{nadeau2007survey}. Moreover, the use of linguistic rules restricts its use to documents written in the language for which the rules were codified, making it impossible to use them in other languages.
 
-Another conventional approach to \gls{ner} is through the use \gls{ml}.
+Another conventional approach to \gls{ner} is through the use of \gls{ml}.
 
 The algorithms must be trained with previously annotated texts so that they learn through these annotations on how to identify if a specific sequence of words belongs to one of the categories annotated. 
 
@@ -157,7 +157,7 @@ In order to perform the training and evaluation of the classifier two distinct s
 The next step is the evaluation of each decision made by the classifier
 Φ for each pair $(d_j, c_i)$, which is compared with the expected decision $\Psi(d_j, c_i)$. The higher the number of decisions of $\Phi$ that are equal to the decisions of $\Psi$, the more effective is the classifier.
 
-A classifier $\Phi$ must have a good generalization capability, in order to eliminate errors caused by over-fitting. This problem occurs when a classifier adapts itself to particular features of the training documents, which can decrease the correctness rate for classification of new
+A classifier $\Phi$ must have a good generalization capability, in order to eliminate errors caused by over-fitting. This problem occurs when a classifier adapts itself to particular features of the training documents, which can decrease the correctness rate for the classification of new
 documents.
 
 The methods that are used in TC are frequently the same used in the more general area of Information Retrieval (IR), where the goal is to find documents or sections within documents that are related to a particular query. TC methods are essential to finding relevant information in many different tasks that deal with large volumes of text-based information. Some of the most traditional tasks where these methods are applied are: finding Internet pages on a given subject; finding answers to similar questions that have been answered before; classifying news by subject or newsgroup, among others. In each case, the goal is to assign the appropriate category or label to each document that needs to be classified.
@@ -190,7 +190,7 @@ Pierre Lévy~\cite{levy1997collective}, a French philosopher who specializes in 
 
 The cyberspace allows individuals to remain interconnected regardless of their geographic location. It deterritorializes knowledge and supports the development of collective intelligence. With regard to the efficient mobilization of competences, the author has stated that an essential factor is to identify and understand the capabilities of the subjects in their individualities. The project of collective intelligence, described by Lévy is not only linked to cognition.  It is also a global project that presumes practical actions intended to mobilize the competences of individuals to provide mutual recognition and enrichment of those who are involved in this proposal ~\cite{levy1997collective}.
 
-Therefore, Lévy ~\cite{levy2001cyberculture} defines collective intelligence as a new sustainable way of thinking through social connections that become viable through the use of network of people on the Web. This collective intelligence is distributed and coordinated in real time, which results in an efficient mobilization of skills, and the cyberspace favors its development. 
+Therefore, Lévy ~\cite{levy2001cyberculture} defines collective intelligence as a new sustainable way of thinking through social connections that become viable through the use of a network of people on the Web. This collective intelligence is distributed and coordinated in real time, which results in an efficient mobilization of skills, and the cyberspace favors its development. 
 
 %According to the author, we exercise our higher mental faculties when involved in living communities, with projects and conflicts. These communities, although sometimes hidden, are always present in our thoughts, providing interlocutors, intellectual instruments, and objects of reflection. The author also states that our intelligence has a more substantial collective dimension because we are ``beings of language.", meaning that language is an integral part of our existence.
 
@@ -239,7 +239,7 @@ As a matter of fact, Encyclopaedia Britannica currently has about 65,000, while 
 
 
 
-The Wikipedia is free and online encyclopedia where all readers can update their content by including and editing their articles. Instead of following a peer review process by experts, Wikipedia articles are available for revisions and enhancements by readers. In his bibliographical review on the use of Wikipedia in Computing Science researches,  Wikipedia is a  valuable resource with broad functionalities.  In \cite{medelyan2009mining} it is demonstrated how researchers had developed sophisticated techniques for extracting knowledge from different perspectives:
+The Wikipedia is a free and online encyclopedia where all readers can update their content by including and editing their articles. Instead of following a peer review process by experts, Wikipedia articles are available for revisions and enhancements by readers. In his bibliographical review on the use of Wikipedia in Computing Science researches,  Wikipedia is a  valuable resource with broad functionalities.  In \cite{medelyan2009mining} it is demonstrated how researchers had developed sophisticated techniques for extracting knowledge from different perspectives:
 
 
 
@@ -272,7 +272,7 @@ Wikipedia recommends that editors link only the first occurrence of a reference 
 
 It is also possible to separate the link itself from the term it refers to, thus creating an alternative arbitrary text for the link. This process is often used for homonyms and abbreviations and can be applied by adding a pipe "|" divider followed by the alternative name. The article comes before the divider and the text that is displayed and placed after it.  For example, if we format a link like [[List of Presidents of the United States| 44th President of the United States]] the final article will display only the 44th President of the United States in the text and it will be a clickable link leading to the List of Presidents of the United States article on Wikipedia. 
 
-\subsubsection{\hspace*{3pt}Desambiguation}
+\subsubsection{\hspace*{3pt}Disambiguation}
 
 In many languages, it is common that a single word represents different concepts or entities (homonymous), which would violate this restriction of uniqueness for Wikipedia titles. In these cases, the article that defines the most known concept remains with the simple name, and the other titles must have a suffix for disambiguation. The suffix of disambiguation must present a detail that makes possible the differentiation of one article from the others. It is suggested that editors create a specific disambiguation page that lists the different homonymous articles with internal links to their contents. When it is not possible to determine which of the concepts is best known, the disambiguation page has the simple title, and all other pages have the suffix for disambiguation.
 
@@ -291,7 +291,7 @@ An example of disambiguation on Wikipedia in English is the concept ``Mercury" (
 \begin{figure}[!h]
 \centering
   \includegraphics[width=\linewidth]{desambiguation}
-  \caption{Desambiguation page for the term ``Mercury"}
+  \caption{Disambiguation page for the term ``Mercury"}
   \label{fig:mercury-desambiguation}
 \end{figure}
 
@@ -332,17 +332,17 @@ Every Wikipedia article should have at least one category. Categories are collec
 
 The category structure is not a tree. Therefore some categories have multiple supercategories, and one article can belong to several categories. In the same way as links, categories show a semantic structure between Wikipedia articles. 
 
-It should be noted that although the structure of Wikipedia category forms a taxonomy, it is not represented by a simple tree of categories and subcategories but, in fact, by a dense graph. This graph allows multiple categorizations of topics simultaneously, which means that one category may have multiple parents. The category "Semantics" is a good example of this complex structure since it is a subcategory of ``Grammar",  ``Linguistics", ``Concepts in logic", ``Semiotics", ``Philosophy of language" and others (see \ref{fig:semantics-category}).
+It should be noted that although the structure of the Wikipedia category forms a taxonomy, it is not represented by a simple tree of categories and subcategories but, in fact, by a complex graph. This graph allows multiple categorizations of topics simultaneously, which means that one category may have multiple parents. The category "Semantics" is a good example of this complex structure since it is a subcategory of ``Grammar",  ``Linguistics", ``Concepts in logic", ``Semiotics", ``Philosophy of language" and others (see \ref{fig:semantics-category}).
 
 
 \begin{figure}[H]
 \centering
   \includegraphics[width=0.8\linewidth]{graph-semantics}
-  \caption{Example of induced graph showing the supercategories of ``Semantics" in the Wikipedia Category Graph}
+  \caption{Example of an induced graph showing the supercategories of ``Semantics" in the Wikipedia Category Graph}
   \label{fig:semantics-category}
 \end{figure}
 
-Although not a semantic basis, Wikipedia has a set of characteristics, such as definition of a large number of articles and organization of articles in categories, which makes an essential semantic resource.
+Although not a semantic basis, Wikipedia has a set of characteristics, such as the definition of a large number of articles and organization of articles in categories, which makes an essential semantic resource.
 
 A simple example, but one that illustrates well the complexity of the relationships between Wikipedia categories is the Apple concept (the fruit) , which is directly linked to four categories: ``Apples", ``Malus", ``Fruits originating in Asia," and ``Plants described in 1768". Each of these categories has been added and cured by people who are part of the Wikipedia community. In addition to the explicit knowledge in the directly attributed categories, a vast implicit knowledge can be inferred by the relations between them, both generically and in a specific way. If we take as starting point the category Apples, from the analysis of their links to the top of the classification, we perceive a more general case: Apples $\rightarrow$  Edible Fruits $\rightarrow$ Edible Plants $\rightarrow$ Food $\rightarrow$ Food and Drink $\rightarrow$ Health.
 To illustrate a more specific case, let us take the Malus category as the origin and analyze one of the possible paths to the top: Malus $\rightarrow$ Maleae $\rightarrow$ Prunoideae $\rightarrow$ Rosaceae $\rightarrow$ Rosales $\rightarrow$ Rosids $\rightarrow$ Core Eudicots $\rightarrow$ Eudicots $\rightarrow$ Angiosperms $\rightarrow$ Plants $\rightarrow$ Eukaryota $\rightarrow$ Organisms $\rightarrow$ Life.
@@ -352,7 +352,7 @@ These are just examples of small fragments in Wikipedia's categorization structu
 \begin{figure}[H]
 \centering
   \includegraphics[width=0.8\linewidth]{graph}
-  \caption{Example of induced graph showing the categories and relationships for the Entity Apple towards Main topics}
+  \caption{Example of an induced graph showing the categories and relationships for the Entity Apple towards Main topics}
   \label{fig:semantics-category-apple}
 \end{figure}
 
@@ -369,13 +369,15 @@ These are just examples of small fragments in Wikipedia's categorization structu
 
 
 
-\subsection{\hspace*{3pt} DBPedia}
+\subsection{\hspace*{3pt} DBpedia}
 
-As described directly on the DBpedia about page\footnote{url{https://wiki.dbpedia.org/about}} DBPedia is 
+As described directly on the DBpedia about page\footnote{url{https://wiki.dbpedia.org/about}} DBpedia is 
 
 \begin{displayquote}
 \say{
+\textit{
 a crowd-sourced community effort to extract structured content from the information created in various Wikimedia projects. This structured information resembles an open knowledge graph (OKG) which is available for everyone on the Web. A knowledge graph is a particular kind of database which stores knowledge in a machine-readable form and provides a means for information to be collected, organized, shared, searched and utilized.}
+}
 \end{displayquote}
 
 

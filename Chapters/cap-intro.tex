@@ -6,18 +6,16 @@ The organization of information has been a concern of human beings since the beg
 
 An example of this activity is in the classification of books in a library. Librarians ordinarily use classification systems to organize the books on the shelves, where books on the same topic are put together. The topics, on the other hand, are usually divided into subtopics that are more specific, forming a hierarchical classification. 
 
-With the emergence of the digital computers, many existing documents were converted into digital formats, and a plethora of new documents were created.
+With the emerging of the digital computers, many existing documents were converted into digital formats, and a plethora of new documents was created.
 
 
-In the early 1990s the Web, a distributed hypermedia system where people usually search for information from a wide variety of areas of knowledge appeared. The large volume of Web documents and the inability to perform extensive editorial control in this system have contributed to the emergence importance of the organization of Web documents, a substantial challenge facing  \gls{ir}, a research area that deals with the problem of representing, organizing and storing information for the user to access them using the computer~\cite{baeza1999modern}. Web directories such as \gls{odp}, Yahoo! Directory and Google Directory are applications that try to organize Web documents into a hierarchy of topics to make it easier to navigate and retrieve documents. 
+In the early 1990s the Web, a distributed hypermedia system where people usually search for information from a wide variety of areas of knowledge appeared. The large volume of Web documents and the inability to perform extensive editorial control in this system have contributed to the emerging importance of the organization of Web documents, a substantial challenge facing  \gls{ir}, a research area that deals with the problem of representing, organizing and storing information for the user to access them using the computer~\cite{baeza1999modern}. Web directories such as \gls{odp}, Yahoo! Directory and Google Directory are applications that try to organize Web documents into a hierarchy of topics to make it easier to navigate and retrieve documents. 
 
-
-The expansion and maintenance of these directories have been done manually by publishers who analyze the content of Web documents and classify them on particular topics. However, the manual classification of these documents is ineffective due mainly to the number of documents published on the Web and all of them were discontinued at some point.
+The expansion and maintenance of these directories have been done manually by publishers who analyze the content of Web documents and classify them on particular topics. However, the manual classification of these documents is ineffective due mainly to the number of documents published on the Web, and all of them were discontinued at some point.
 
 Technological improvement and the emergence of computers enabled the development of digital libraries, where it is possible to store indexes and, in some cases, traditional library documents in digital format. Digital libraries have created new demands for information organization that has influenced the emergence of \gls{ir}.
 
-In this context, the primary purpose of this thesis is to create a general-purpose classification method based on Wikipedia Categorization scheme that can categorize text-based content on the Web, for instance, scientific articles, web pages or even posts on social media. The method relies on feature extraction from the collective knowledge of Wikipedia contributors, rather than on a traditional classification system created by domain experts. That is, we believe it is more accessible to ordinary user access and retrieve information from a Web created by people to people rather than by experts.
-
+In this context, the primary purpose of this thesis is to create a general-purpose classification method based on Wikipedia Categorization scheme that can categorize text-based content on the Web, for instance, scientific articles, web pages or even posts on social media. The method relies on feature extraction from the collective knowledge of Wikipedia contributors, rather than on a traditional classification system created by domain experts. That is, we believe it is more suitable for regular user access and retrieve information from a Web created by people to people rather than by experts.
 
 This chapter provides an overview of the thesis and the motivation for the proposed method, as well as its relation to the problem stated. 
 
@@ -29,7 +27,7 @@ The amount of data available in digital format on the worldwide web increased st
 
 Part of the data in the digital universe is in textual formats, such as emails, reports, newsletters, articles, and web page content. Also, with the advent of Web 2.0, textual data has been used as a means to disseminate information, whether by postings on social networks, wikis or blogs. ~\cite{fuchs2013internet} ~\cite{o2009web}
 
-Due to the significant amount of textual information produced and made available today, it becomes humanly impossible to organize, analyze, and extract knowledge embedded in textual information. Consequently, mechanisms to accomplish such tasks removing or at least diminishing the need for human intervention have gained importance in the last decades. ~\cite{feldman2007text} ~\cite{berry2010text} ~\cite{aggarwal2012mining} 
+Due to the significant amount of textual information produced and made available today, it becomes humanly impossible to organize, analyze, and extract knowledge embedded in textual information. Consequently, mechanisms to accomplish such tasks as removing or at least diminishing the need for human intervention have gained importance in the last decades. ~\cite{feldman2007text} ~\cite{berry2010text} ~\cite{aggarwal2012mining} 
 
 The possibility of investigating a method for automatic text classification, capable of assigning categories that are understandable to humans and that takes into account the collective knowledge encoded in Wikipedia rather than expert's effort, is what motivates the development of this work.
 
@@ -44,26 +42,26 @@ Text classification allows users to find desired information faster by searching
 According to Sebastiani \cite{Sebastiani:2002}, the first efforts to automate the classification of digital documents were made in the 1960s. However, until the 1980s, a semiautomatic technique based on knowledge engineering was used for document classification.
 
 Although this approach can be precise, semiautomatic document classification has a significant limitation concerning the acquisition of knowledge for the construction of the classifier. This limitation is primarily on the need to have at least two human experts involved in the process: a domain expert, with the ability to classify documents in the predefined set of classes and a knowledge engineer, able to encode the classification in a programming language as a set of rules. This approach is not flexible because if there are changes in the classification system or if a new set of classes is created, the two experts should be involved again to adjust the rules and the classifier.
-In the early 1990s, fully automated approaches started to be used to classify documents in academic researches.\gls{ml} techniques based on statistics and probabilities are used to automatically generate a classifier that can relate a set of characteristics present in the various documents of a training set with the classes of those documents started to be tested.
+In the early 1990s, fully automated approaches started to be used to classify documents in academic researches. \gls{ml} techniques based on statistics and probabilities are used to automatically generate a classifier that can relate a set of characteristics present in the various documents of a training set with the classes of those documents started being tested.
 
 
-Text classification can be defined as the association of documents to predefined classes. When a document is associated with a single class among the available it is said that it is a single-label classification problem. When a document can be associated with more than one category at a time, it is said to be a multi-label classification. In this thesis, we focus on the single-label classification problem that is, in fact, the most explored in the literature. Furthermore, multi-label classification problems can usually be reduced to a particular case of single-label classification.
+Text classification can be defined as the association of documents to predefined classes. When a document is associated with a single class among the available, it is said that it is a single-label classification problem. When a document can be associated with more than one category at a time, it is said to be a multi-label classification. In this thesis, we focus on the single-label classification problem that is, in fact, the most explored in the literature. Furthermore, multi-label classification problems can usually be reduced to a particular case of single-label classification.
 
 
-In the \gls{ml} approach, classifiers are constructed through an inductive process, capable of learning the correlation between features and classes from a set of pre-classified document \cite{Sebastiani:2002}.
+In the \gls{ml} approach, classifiers are constructed through an inductive process, capable of learning the correlation between features and classes from a set of the pre-classified document \cite{Sebastiani:2002}.
 
 Despite all efforts to improve algorithms so that they can generate effective classifiers, it is observed that the effectiveness of classifiers is also strongly dependent on how documents are represented \cite{Gabrilovich:2006, bekkerman2004using, supreethi2010novel}, or quality of the textual components used as information in the training process for classification. These elements are called document features. The most common features used for \gls{tc} are the terms of the documents. In this way, the more you use features that are relevant to classification in the document representation, the higher the chances of having an increase in the effectiveness of the method.
 
 
 To formally define the problem of automatically assigning categories to documents let $D = \{d_1,d_2,d_3,\ldots\,d_n\}$ be a finite set of documents and $C = \{c_1,c_2,c_3,\ldots\,c_n\}$ a finite set of predefined categories.
 The problem is finding a function $f: D \times C \mapsto \mathbb{R}$ that assigns a score $s$ for each pair 
-$\{d_i, c_i\} \in  D \times C $. The document $d_i$ is assigned to a class $c_i$ if $s$ is greater than predefined threshold, $\{d_i, c_i\} > \tau$.
+$\{d_i, c_i\} \in  D \times C $. The document $d_i$ is assigned to a class $c_i$ if $s$ is greater than a predefined threshold, $\{d_i, c_i\} > \tau$.
 
-According to Sebastiani\cite{Sebastiani:2002}, the definition of a text classifier with machine learning techniques can be summarized in the following steps:
+According to Sebastiani\cite{Sebastiani:2002}, the definition of a text classifier can be summarized in the following steps:
 
 \begin{enumerate}
 \item  Acquisition of documents belonging to the domain (i.e.,
-collection of documents in $D$);
+a collection of documents in $D$);
 \item Creation of a vocabulary of $T$ terms  $\{w_1,w_2,w_3,\ldots\,w_T\}$ that will be used in the representation of documents. This step involves preprocessing of the text, such as lexical analysis (elimination of digits, punctuation marks), removal of stopwords (articles, prepositions), stemming of words (reduction of the word to its radical), among others text operations;
 
 \item Creation of the initial representation of documents with the definition of the set of attributes that describe the documents. Each attribute may be merely a Boolean value that indicates whether or not a given vocabulary term is present in the document (i.e., Boolean representation).  Each attribute can also correspond to a numerical weight associated to a given term, indicating the relevance of the term to the document being described. 
@@ -91,7 +89,7 @@ The primary objective of this research can be decomposed into the following spec
 
 \item Perform a graph-theoretic analysis of the Wikipedia Category Graph, to verify if its structure is similar to other well-known semantic networks.
 
-\item Design, execute and analyze the results of an experimental study involving crowdsource, in order to verify if humans recognize the classification 
+\item Design, execute and analyze the results of an experimental study involving crowdsource, to verify if humans recognize the classification 
 generated by the proposed method.
 
 \item Plan, execute and analyze the results of a computational, experimental study aiming to compare the performance of the method in Classification and Clustering with related works.
@@ -100,9 +98,9 @@ generated by the proposed method.
 
 \section{\hspace*{3pt}Solution Approach}
 
-Recently, researchers have started integrating background knowledge into document representation based on external knowledge base such as Wikipedia and \gls{odp} \cite{rafi2012content}.
+Recently, researchers have started integrating background knowledge into document representation based on external knowledge bases such as Wikipedia and \gls{odp} \cite{rafi2012content}.
 
-Categorization plays a crucial role in the future of information search services and many reliable categorization approaches involve integration of knowledge from Wikipedia. This explains the widespread usage of Wikipedia’s article contents and category hierarchy to generate semantic resources that enhance performance on text classification and keyword extraction among other applications \cite{gantner2009automatic}. 
+Categorization plays a crucial role in the future of information search services, and many reliable categorization approaches involve the integration of knowledge from Wikipedia. This explains the widespread usage of Wikipedia’s article contents and category hierarchy to generate semantic resources that enhance performance on text classification and keyword extraction among other applications \cite{gantner2009automatic}. 
 
 Wikipedia is the most substantial encyclopedia freely available on the Web. It has been developed and curated by a large number of users over time and represents the common sense about facts, people and the broadest type of topics currently found on the Web.
 
@@ -113,10 +111,10 @@ As in many classification methods, such as Dewey Decimal Classification\cite{mit
 
 The Wikipedia Categorization scheme is a thesaurus collaboratively constructed used for indexing the content on Wikipedia pages. \cite{voss2006collaborative} Therefore, we can say that it represents the common sense about everything contained in Wikipedia. It is a classification made by people to people and not by experts to ordinary people. It is also noteworthy to mention the richness of this kind of information for several tasks performed by users on the Web. For instance, search, information retrieval, recommendation, clusterization, etc. 
 
-The proposed method is a general purpose classification based on Wikipedia Categorization scheme that is able to classify text-based content on the Web, for instance, scientific articles and even tweets. At the current stage, the proposed method is able to classify content in English and can be accessed at \url{http:\\www.TagTheWeb.com.br}.
+The proposed method is a general purpose classification based on Wikipedia Categorization scheme that can classify text-based content on the Web, for instance, scientific articles and even tweets. At the current stage, the proposed method is able to classify content in English and can be accessed at \url{http:\\www.TagTheWeb.com.br}.
 
 
-We chose Wikipedia categorization scheme for 3 three main reasons: 
+We chose Wikipedia categorization scheme for three main reasons: 
 
 \begin{itemize}
 \item  Wikipedia is the largest online encyclopedia and is constructed by contributors from all over the world.
@@ -136,7 +134,7 @@ A processing chain to generate a generic categorization was developed based on t
 \begin{enumerate}[(i)]
 \item \hyperref[sec:text-annotation]{Text Annotation};
 
-Automatically extract structured information from unstructured text and link them to an external knowledge bases in the \gls{lod}. For this thesis, DBpedia was used because it is based on information extracted from Wikipedia.
+Automatically extract structured information from unstructured text and link them to an external knowledge base in the \gls{lod}. For this thesis, DBpedia was used because it is based on information extracted from Wikipedia.
 
 \item \hyperref[sec:categories-extraction]{Categories Extraction};
 
@@ -174,17 +172,14 @@ We can divide the primary outcomes of this thesis in two categories of contribut
 \subsection{\hspace*{3pt}Technical Contributions}
 
 \begin{itemize}
-\item TagTheWeb\footnote{\url{http://ww.tagtheweb.com.br}}, A public, documented \footnote {\url {https://documenter.getpostman.com/view/1071275/tagtheweb/77bC7K}} and open-source API capable of receiving any textual resource and processing each of the three phases described in the proposed approach.
+\item TagTheWeb\footnote{\url{http://ww.tagtheweb.com.br}}, A public, documented \footnote{\url{http://documenter.getpostman.com/view/1071275/tagtheweb/77bC7K}} and open-source API capable of receiving any textual resource and processing each of the three phases described in the proposed approach.
 
-\item 
-The Wikipedia Category Graph snapshot from October of 2016 filtered and represented in Neo4J\footnote{\url{https://neo4j.com/}} and graph-tools\footnote{\url{https://graph-tool.skewed.de/}}.  
+\item  The Wikipedia Category Graph snapshot from October of 2016 filtered and represented in Neo4J\footnote{\url{http://neo4j.com}} and graph-tools\footnote{\url{http://graph-tool.skewed.de}}.  
 
-\item A dataset \footnote {\url {https://github.com/jerrylewisbh/TagTheWeb}} containing all nodes of the Wikipedia Category Graph and the measures of centrality, in-degree, out-degree, clustering coefficient and PageRank. An example with the first 50 categories can be seen in appendix \ref{app:dataset-categories}
+\item A dataset \footnote {\url{http://github.com/jerrylewisbh/TagTheWeb}} containing all nodes of the Wikipedia Category Graph and the measures of centrality, in-degree, out-degree, clustering coefficient, and PageRank. An example with the first 50 categories can be seen in Appendix \ref{app:dataset-categories}.
 
 \end{itemize}
-Part of this research has been publish as \\
-
-Medeiros, J. F., Nunes, B. P., Siqueira, S. W. M., \& Leme, L. A. P. P. (2018, June). TagTheWeb: Using Wikipedia Categories to Automatically Categorize Resources on the Web. In \textit{European Semantic Web Conference} (pp. 153-157). Springer, Cham.
+Part of this research has been published as \textit{TagTheWeb: Using Wikipedia Categories to Automatically Categorize Resources on the Web}\cite{medeiros2018tagtheweb}.
 
 \section{\hspace*{3pt}Thesis Outline}
 
@@ -193,11 +188,13 @@ The text of this thesis is organized into six chapters, being this Introduction 
 \begin{itemize}
 \item\textbf {Chapter \ref{chapter:related-concepts}:} It presents the fundamental concepts needed to understand the objectives, methods and results of this thesis.
 
-\item \textbf {Chapter \ref{chapter:related-works}:} Describes the principal related works that served as inspiration for the development of this research.
+\item \textbf {Chapter \ref{chapter:graph}:} This chapter describes the graph-theoretic analysis cared out on the Wikipedia Category Graph.
 
 \item \textbf {Chapter \ref{chapter:methodology}:} It presents the steps of the proposed method, as well as details of the computational implementation.
 
 \item \textbf {Chapter \ref{chapter:experiments}:} Describes the evaluation methods employed and the results of computational and crowdsourcing experiments.
+
+\item \textbf {Chapter \ref{chapter:related-works}:} Describes the principal related works that served as inspiration for the development of this research.
 
 \item \textbf {Chapter \ref{chapter:conclusion}:} This chapter presents the conclusions extracted from the experiments, the contributions of the research in a general context, the limitations, and perspectives of future work.
 

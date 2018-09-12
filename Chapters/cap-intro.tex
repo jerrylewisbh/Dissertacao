@@ -13,8 +13,6 @@ In the early 1990s the Web, a distributed hypermedia system where people usually
 
 The expansion and maintenance of these directories have been done manually by publishers who analyze the content of Web documents and classify them on particular topics. However, the manual classification of these documents is ineffective due mainly to the number of documents published on the Web, and all of them were discontinued at some point.
 
-Technological improvement and the emergence of computers enabled the development of digital libraries, where it is possible to store indexes and, in some cases, traditional library documents in digital format. Digital libraries have created new demands for information organization that has influenced the emergence of \gls{ir}.
-
 In this context, the primary purpose of this thesis is to create a general-purpose classification method based on Wikipedia Categorization scheme that can categorize text-based content on the Web, for instance, scientific articles, web pages or even posts on social media. The method relies on feature extraction from the collective knowledge of Wikipedia contributors, rather than on a traditional classification system created by domain experts. That is, we believe it is more suitable for regular user access and retrieve information from a Web created by people to people rather than by experts.
 
 This chapter provides an overview of the thesis and the motivation for the proposed method, as well as its relation to the problem stated. 
@@ -45,17 +43,17 @@ Although this approach can be precise, semiautomatic document classification has
 In the early 1990s, fully automated approaches started to be used to classify documents in academic researches. \gls{ml} techniques based on statistics and probabilities are used to automatically generate a classifier that can relate a set of characteristics present in the various documents of a training set with the classes of those documents started being tested.
 
 
-Text classification can be defined as the association of documents to predefined classes. When a document is associated with a single class among the available, it is said that it is a single-label classification problem. When a document can be associated with more than one category at a time, it is said to be a multi-label classification. In this thesis, we focus on the single-label classification problem that is, in fact, the most explored in the literature. Furthermore, multi-label classification problems can usually be reduced to a particular case of single-label classification.
+Text classification can be defined as the association of documents to predefined classes. When a document is associated with a single class among the available, it is said that it is a single-label classification problem. When a document can be associated with more than one category at a time, it is said to be a multi-label classification. 
 
+The approach proposed in this thesis is a multi-label classification method, capable of assigning different degrees of membership for a document regarding each one of the categories available. Furthermore, multi-label classification problems can usually be reduced to a particular case of single-label classification\cite{Sebastiani:2002}. To make our results suitable for comparison with other approaches and with the judgment of humans, during the experiments we transformed the classification in a single-label assignment by considering only the categories with the highest degrees of membership.
 
-In the \gls{ml} approach, classifiers are constructed through an inductive process, capable of learning the correlation between features and classes from a set of the pre-classified document \cite{Sebastiani:2002}.
 
 Despite all efforts to improve algorithms so that they can generate effective classifiers, it is observed that the effectiveness of classifiers is also strongly dependent on how documents are represented \cite{Gabrilovich:2006, bekkerman2004using, supreethi2010novel}, or quality of the textual components used as information in the training process for classification. These elements are called document features. The most common features used for \gls{tc} are the terms of the documents. In this way, the more you use features that are relevant to classification in the document representation, the higher the chances of having an increase in the effectiveness of the method.
 
 
 To formally define the problem of automatically assigning categories to documents let $D = \{d_1,d_2,d_3,\ldots\,d_n\}$ be a finite set of documents and $C = \{c_1,c_2,c_3,\ldots\,c_n\}$ a finite set of predefined categories.
 The problem is finding a function $f: D \times C \mapsto \mathbb{R}$ that assigns a score $s$ for each pair 
-$\{d_i, c_i\} \in  D \times C $. The document $d_i$ is assigned to a class $c_i$ if $s$ is greater than a predefined threshold, $\{d_i, c_i\} > \tau$.
+$\{d_i, c_i\} \in  D \times C $, where the membership value of  $s$ specifies the degree of relevance of the category $c_i$ to the document $d_j$
 
 According to Sebastiani\cite{Sebastiani:2002}, the definition of a text classifier can be summarized in the following steps:
 
@@ -70,14 +68,14 @@ a collection of documents in $D$);
 
 \item Induction of the classifier from a training set. %At section \ref{sec:text-classifiers}, we will address some algorithms that can be used to generate classifiers;%
 
-\item Performance evaluation from a test set. Among the metrics used to evaluate classifiers, we can cite the accuracy and recall. The evaluation of an algorithm can also be done through k-fold cross-validation experiments, where different training and test sets are used to construct and evaluate the classifiers. %More about this evaluation metrics will be discussed in section \ref{sec:evaluation-of-classifiers}%
+\item Performance evaluation from a test set. Among the metrics used to evaluate classifiers, we can cite the precison, accuracy,  recall and F-measure. More about this evaluation metrics will be discussed in the description of the experiments that were carried out (chapter \ref{chapter:experiments}).
 
 \end{enumerate}
 
 
 \section{\hspace*{3pt}Goals of this Thesis}
 
-Our primary goal is to take advantage of the Wikipedia body of knowledge to automatically categorize any text-based content on the Web according to the collective knowledge of Wikipedia contributors.
+Our primary goal is to take advantage of the Wikipedia body of knowledge to automatically categorize text-based content on the Web according to the collective knowledge of Wikipedia contributors.
 The primary objective of this research can be decomposed into the following specific goals:
 
 
@@ -104,12 +102,12 @@ Categorization plays a crucial role in the future of information search services
 
 Wikipedia is the most substantial encyclopedia freely available on the Web. It has been developed and curated by a large number of users over time and represents the common sense about facts, people and the broadest type of topics currently found on the Web.
 
-One of the outstanding features of Wikipedia is the categorization system used to classify its internal content. Very briefly, there are a finite number of top categories that represents the whole Wikipedia content. These top categories, as well as their subcategories, are not fixed and are maintained and curated by Wikipedia users. 
+One of the outstanding features of Wikipedia is the categorization system used to classify its internal content. Very briefly, there is a finite number of top categories that represents the whole Wikipedia content. These top categories, as well as their subcategories, are not fixed and are maintained and curated by Wikipedia users. 
 
 As in many classification methods, such as Dewey Decimal Classification\cite{mitchell1996dewey} and Library of Congress Classification\cite{chan2016guide}, an article in Wikipedia can belong to one or more top categories which at some sense represents the topics it covers. Within Wikipedia, the primary purpose of this classification is to facilitate the search for relevant information.
 
 
-The Wikipedia Categorization scheme is a thesaurus collaboratively constructed used for indexing the content on Wikipedia pages. \cite{voss2006collaborative} Therefore, we can say that it represents the common sense about everything contained in Wikipedia. It is a classification made by people to people and not by experts to ordinary people. It is also noteworthy to mention the richness of this kind of information for several tasks performed by users on the Web. For instance, search, information retrieval, recommendation, clusterization, etc. 
+The Wikipedia Categorization scheme is a thesaurus collaboratively constructed used for indexing the content on Wikipedia pages \cite{voss2006collaborative}. Therefore, we can say that it represents the common sense about everything contained in Wikipedia. It is a classification made by people to people and not by experts to ordinary people. It is also noteworthy to mention the richness of this kind of information for several tasks performed by users on the Web. For instance, search, information retrieval, recommendation, clusterization, etc. 
 
 The proposed method is a general purpose classification based on Wikipedia Categorization scheme that can classify text-based content on the Web, for instance, scientific articles and even tweets. At the current stage, the proposed method is able to classify content in English and can be accessed at \url{http:\\www.TagTheWeb.com.br}.
 
@@ -142,7 +140,7 @@ In this step, we traverse the entity relationships to find a more general repres
 
 \item \hyperref[sec:doc-representation]{Document Representation}.
 
-Wikipedia articles are classified under categories by editors. Although, the set of all Wikipedia categories cannot be directly used as a feature for categorization, because it is too large. Also,  different texts will have a different set of categories, making it impossible to categorize and compare them. To reduce this dimensionality, our approach consists of navigating in the Category Graph from each category extracted in the previous step towards the top of the graph by all the shortest paths between the category and the main topics. 
+Wikipedia articles are classified under categories by editors. However, the set of all Wikipedia categories cannot be directly used as a feature for categorization, because it is too large. Also,  different texts will have a different set of categories, making it impossible to categorize and compare them. To reduce this dimensionality, our approach consists of navigating in the Category Graph from each category extracted in the previous step towards the top of the graph by all the shortest paths between the category and the main topics. 
 
 Based on the influence of each main topic category in the resource, we generate a document representation from the calculated categorization as a multidimensional vector.
 
@@ -179,7 +177,7 @@ We can divide the primary outcomes of this thesis in two categories of contribut
 \item A dataset \footnote {\url{http://github.com/jerrylewisbh/TagTheWeb}} containing all nodes of the Wikipedia Category Graph and the measures of centrality, in-degree, out-degree, clustering coefficient, and PageRank. An example with the first 50 categories can be seen in Appendix \ref{app:dataset-categories}.
 
 \end{itemize}
-Part of this research has been published as \textit{TagTheWeb: Using Wikipedia Categories to Automatically Categorize Resources on the Web}\cite{medeiros2018tagtheweb}.
+Part of this research has been published as \textit{TagTheWeb: Using Wikipedia Categories to Automatically Categorize Resources on the Web} \cite{medeiros2018tagtheweb}.
 
 \section{\hspace*{3pt}Thesis Outline}
 

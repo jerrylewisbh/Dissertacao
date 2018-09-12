@@ -94,6 +94,8 @@ out-degree & 4,5603 & 12         \\ \bottomrule
 
 Based on the analysis of the \gls{wcg} degree distribution, as presented by the plot in figure \ref{fig:in-and-out-degree} and the exponent displayed in table \ref{tab:power-law-params}, it is demonstrated that the Wikipedia Category Graph nodes follow a power-law distribution, hence we can consider it as a scale-free network.  
 
+A remarkable peculiarity of a scale-free network, derived from its degree distribution, is its tolerance to mistakes. If a random vertex is disconnected from the network, the highest probability is that this vertex has a low degree, causing a little impact for the interconnectivity of the remaining vertices.
+
 \subsubsection{\hspace*{3pt} Assortativity}
 
 Regarding the degree distribution in a graph $G$, we can also determine the assortativity coefficient $r$, which measures how vertices of different types are preferentially connected amongst themselves. The assortativity coefficient \cite{newman2003mixing} is the Pearson correlation coefficient of degree between pairs of linked nodes. Positive values of $r$ indicate a correlation between nodes of similar degree, while negative values indicate relationships between nodes of different degree. In general, $r$ lies between -1 and 1. When $r = 1$, the network is said to have perfect assortative mixing patterns, when $r = 0$ the network is non\-assortative, and when  $r=-1$ the network is completely disassortative.

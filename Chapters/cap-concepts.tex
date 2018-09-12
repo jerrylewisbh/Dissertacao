@@ -1,4 +1,4 @@
-\chapter{\hspace*{3pt} Related Concepts}
+\chapter{\hspace*{3pt} Fundamental Concepts}
 \label{chapter:related-concepts}
 
 
@@ -10,31 +10,22 @@ The concepts related to Information Retrieval and Extraction are essential to un
 We also provide some general information about natural language processing (NLP) techniques that are applicable to our categorization method. 
 This chapter ends with an overview of the concept and methods for the automatic classification of textual resources, as it is the primary goal of the research presented in this thesis. 
 
-\section{\hspace*{3pt}Natural Language}
+\section{\hspace*{3pt}Natural Language Processing - NLP}
 
-Natural language is any language developed naturally by the human being, in an unpremeditated way, as a result of the natural ease of language processing by the human intellect \cite{chomsky1975logical}. Spoken, written and sign languages are examples of natural languages. 
-All the elements of a language are linked together by a variety of relations, and for that reason, they can be considered systems. Although the assimilation language occurs naturally by humans, it is a system of remarkable complexity \cite{chomsky1975logical}. 
-As it is the expression of the culture of a society, developed through the generations and in different situations, it does not constitute a system of rigid rules that can be trivially implemented and interpreted by computers.
-
-
-Unlike humans, machines are designed to perform well-defined tasks from specific instructions. A computer is not by itself an intelligent machine in the sense that it can not learn from its own experience to improve its future behavior. On the contrary, a computer is only capable of strictly performing tasks that are delegated to it and that are part of the set of actions that it can perform. In this sense, it is necessary to understand what kind of instructions can be executed by the computers so that we can program them - instruct them with the sequence of actions necessary to solve a particular problem so that they carry out the task in the desired way.
-\subsection{\hspace*{3pt}Natural Language Processing - NLP}
-
- 
 
 \gls{nlp} consists of the development of mathematical and computational models of various aspects of language, to make possible the development of a wide range of systems that rely on information expressed in natural language \cite{joshi1991natural}.
 
+Natural language is any language developed naturally by the human being, in an unpremeditated way, as a result of the natural ease of language processing by the human intellect \cite{chomsky1975logical}. Spoken, written and sign languages are examples of natural languages. 
 
 \gls{nlp} has the general objective of processing human language so that it is understandable by the computer. Among the essential areas of \gls{nlp} we can highlight: the recognition of voice, the recognition of writing and the reproduction of voice from the text. \gls{nlp} encompasses several and complex areas of knowledge, hence the  researches in this field are interdisciplinary, involving concepts of computer science, linguistics, logic, and psychology.
 
+One of the uses of \gls{nlp} is the extraction of meaning from unstructured resources so that they can be used in a structured way in computational application.
 
-\subsection{\hspace*{3pt}Text-based Resources}
 Structured resources are machine-readable resources that encode relationships of various types according to the level of information \cite{hovy2013collaboratively}. Structured resources are of high quality as they are built from the knowledge of domain experts, lexicographers, and linguists. However, structured resources are limited because they require significant efforts in creation and updating. Because they are built manually, they depend on the availability of experts to extend their coverage and to keep them up to date on recent events. Moreover, knowledge encoded in one language is not transferable to others, requiring a new effort for each new language.
 
 The most common structured resources are:
 
 \begin{itemize}
-
 
 \item Thesaurus: collections of related terms;
 \item Taxonomies: Hierarchical structures of classification of terms;
@@ -43,24 +34,26 @@ The most common structured resources are:
 
 Unstructured resources are collections of texts that have no formalized knowledge and are machine readable only as sequences of characters and words. Different statistical models can extract knowledge from unstructured collections, and the massive amount of texts available on the \gls{www} enables the construction of knowledge bases of excellent coverage. However, they are limited by the lack of texts that demonstrate common-sense knowledge \cite{hovy2013collaboratively}. Also, statistical models are not able to issue knowledge with quality equivalent to the resources built by specialists.
 
-The authors conclude that the limitations of unstructured resources are complementary to the limitations of structured resources. While unstructured resources enable broad coverage with low quality, structured resources have high quality but low coverage. Semistructured resources constructed collaboratively on the \gls{www} encode the knowledge voluntarily made available by users of these resources, covering different areas of knowledge and having quality comparable to that obtained from specialists. The semi-structured resources mentioned by the authors are Wiktionary, Flickr, Twitter, Yahoo! Answers and, with greater emphasis on the Wikipedia \cite{hovy2013collaboratively}.
+The limitations of unstructured resources are complementary to the limitations of structured resources. While unstructured resources enable broad coverage with low quality, structured resources have high quality but low coverage. Semistructured resources constructed collaboratively on the \gls{www} encode the knowledge voluntarily made available by users of these resources, covering different areas of knowledge and having quality comparable to that obtained from specialists. The semi-structured resources mentioned by the authors are Wiktionary, Flickr, Twitter, Yahoo! Answers and, with greater emphasis on the Wikipedia \cite{hovy2013collaboratively}.
+
+Nowadays, most of the information in government, industry, business, and other institutions are stored electronically on the Web, in the form of semi-structured or restructured resources.
 
 
+
+In this context, the existence of \gls{ir} systems becomes indispensable to assist users in the process of locating information that is relevant in collections of unstructured or semi-structured data (e.g., web pages, documents, images, video, etc.).  
 
 
 \section{\hspace{3pt}Information Retrieval}
 
-\gls{ir} systems are mostly known for their searching ability, where a user states an information need and the system provides the user with a response to this information need in return. IR is a large academic field and encompasses several topics like browsing or filtering documents, processing of retrieved documents and clustering or classifying documents according to their content \cite{Manning:2008}, Manning defines \gls{ir} as:
+\gls{ir} systems are mostly known for their searching ability, where a user states an information need and the system provides the user with a response to this information need in return. \gls{ir} is a large academic field and encompasses several topics like browsing or filtering documents, processing of retrieved documents and clustering or classifying documents according to their content \cite{Manning:2008}, Manning defines \gls{ir} as finding material (usually documents) of an unstructured nature (usually text) that satisfies an information need from within large collections (usually stored on computers).
 
-\begin{displayquote}
-\say{finding material (usually documents) of an unstructured nature (usually text) that satisfies an information need from within large collections (usually stored on computers)}\cite{Manning:2008}. 
-\end{displayquote}
+A system can increase its precision when retrieving the users' information need if it indexes well-representing features of the text. As the collection of documents expand, automatic techniques that can extract these features become crucial.  \gls{tc} techniques can provide an output that can be representative of a research document, allowing for \gls{ir} systems to handle the indexing and retrieval process.
 
-A system can increase its precision when retrieving the users' information need if it indexes well-representing features of the text. As the collection of documents expand, automatic techniques that can extract these features become crucial.  Text Classification techniques can provide an output that can be representative of a research document, allowing for IR systems to handle the indexing and retrieval process.
+
 
 \section{\hspace*{3pt}Information Extraction}
 
-\gls{ie} is the process of automatically extracting particular information entities or the relationship between different information entities from a source \cite{sarawagi2008information} and presenting it in a structured form. The source of information can be structured like a relational database, semi-structured like an HTML document or unstructured as free text from an academic paper. IE combines techniques from Natural Language Processing, lexical resources and semantic constraints to effectively provide automatic mining of documents.
+\gls{ie} is the process of automatically extracting particular information entities or the relationship between different information entities from a source \cite{sarawagi2008information} and presenting it in a structured form. The source of information can be structured like a relational database, semi-structured like an HTML document or unstructured as free text from an academic paper. IE combines techniques from \gls{nlp}, lexical resources and semantic constraints to effectively provide automatic mining of documents.
 
 \subsection{\hspace*{3pt}Documents Representation}
 
@@ -69,8 +62,6 @@ Document representation has substantial importance when dealing with text classi
 Plain texts are usually not used directly by classification algorithms.  The documents are processed and transformed so that they can represent the semantic content of the text optimized for numeric processing.   
 
 Most \gls{tc} methods use the \gls{bow} approach to represent documents. \cite{Lan:2009} \cite{Manning:2008}. The categorization takes into account the presence or the absence of key terms in the document-terms matrix that represents each document, as stated by Sebastiani \cite{Sebastiani:2002}.
-
-[ADD EXAMPLE HERE ]
 
 The reasons for using this approach is the simplicity, efficiency and relative effectiveness of the \gls{bow} paradigm.
 
@@ -84,16 +75,6 @@ Other approaches have explored features that are not directly extracted from the
 
 Numerous methods that use Feature Generation have achieved excellent results in Text Classification through the extraction of semantic relations such as synonymy, hyponymy and associative relations between concepts, present in Encyclopedias, Thesaurus, Ontologies, Web Pages and other sources. \cite{Gabrilovich:2005,Gabrilovich:2006,Hu:2008,Wang:2008, Wang:2009}.
 
-\subsection{\hspace*{3pt}Vector Space Model}
-
-For the process of Text Classification, the first and indispensable step is to convert the content of the text into a compact representation that can be used for computer-based classifiers.
-
- 
-In this context, the \gls{vsm} consists of an algebraic model for the representation of texts, through which documents are represented as vectors of terms. \cite{Lan:2009,Salton:1988,supreethi2010novel}.
-
-This type of representation is widely used in Information Retrieval, both in tasks of textual retrieval and ordering of documents by relevance (ranking), as well as in document classification tasks. The use of vector representation makes possible the use of any algebraic operation applicable to this type of structure, making it possible to compare the similarity between two documents, as explained by Salton\cite{Salton:1975}.
-
- 
 
 \subsection{\hspace*{3pt}Features Representation}
 
@@ -115,7 +96,6 @@ Grishman and  Sundheim \cite{grishman1996message} defined the task of \gls{ner},
 
 The named entity recognition task has been researched under several names over the years. For example Wikification \cite{Ratinov:2011}, Grounding \cite{leidner2003grounding} or Named-entity disambiguation \cite{hoffart2011robust}. The common approach can be generalized into following steps: find named entity mentions in given text, generate a set of candidates for each mention, select the best candidate for each mention, link the mention to the corresponding entry on Knowledge Base.
 
-q'
 In its most common form, the \gls{ner} task recognizes a predefined number of semantic categories, such as those defined in \cite{grishman1996message}. However, it has also been successfully applied to specific domains such as biology \cite{campos2012biomedical} and geology \cite{sobhana2010conditional}, where a more substantial number of domain-related categories are used. A prevalent form is the use of linguistic rules for the recognition of entities. In this approach the rules are manually coded from grammatical and domain knowledge, requiring specialization in both to obtain good results \cite{nadeau2007survey}. Moreover, the use of linguistic rules restricts its use to documents written in the language for which the rules were codified, making it impossible to use them in other languages.
 
 Another conventional approach to \gls{ner} is through the use of \gls{ml}.
@@ -160,7 +140,7 @@ The next step is the evaluation of each decision made by the classifier
 A classifier $\Phi$ must have a good generalization capability, in order to eliminate errors caused by over-fitting. This problem occurs when a classifier adapts itself to particular features of the training documents, which can decrease the correctness rate for the classification of new
 documents.
 
-The methods that are used in TC are frequently the same used in the more general area of Information Retrieval (IR), where the goal is to find documents or sections within documents that are related to a particular query. TC methods are essential to finding relevant information in many different tasks that deal with large volumes of text-based information. Some of the most traditional tasks where these methods are applied are: finding Internet pages on a given subject; finding answers to similar questions that have been answered before; classifying news by subject or newsgroup, among others. In each case, the goal is to assign the appropriate category or label to each document that needs to be classified.
+The methods that are used in \gls{tc} are frequently the same used in the more general area of \gls{ir}, where the goal is to find documents or sections within documents that are related to a particular query. \gls{tc} methods are essential to finding relevant information in many different tasks that deal with large volumes of text-based information. Some of the most traditional tasks where these methods are applied are: finding Internet pages on a given subject; finding answers to similar questions that have been answered before; classifying news by subject or newsgroup, among others. In each case, the goal is to assign the appropriate category or label to each document that needs to be classified.
 
 
 
@@ -179,7 +159,7 @@ The binary approach is said to be a more general approach than the multi-class a
 \subsection{\hspace*{3pt}Text Classifiers}
 \label{sec:text-classifiers}
 
-Over the last few years, a vast number of algorithms have been proposed for CAT using machine learning. Among them, one can cite the naive Bayes \cite{mccallum1998comparison}, \gls{knn} \cite{Rijsbergen:1979}, \gls{svm} \cite{joachims1998text} and rule learning algorithms \cite{slattery1998combining}, which have been widely used. The researches that deal with document classification usually report performance comparison among the different algorithms available.
+Over the last few years, a vast number of algorithms have been proposed for \gls{tc} using machine learning. Among them, one can cite the naive Bayes \cite{mccallum1998comparison}, \gls{knn} \cite{Rijsbergen:1979}, \gls{svm} \cite{joachims1998text} and rule learning algorithms \cite{slattery1998combining}, which have been widely used. The researches that deal with document classification usually report performance comparison among the different algorithms available.
 
 
 
@@ -190,24 +170,7 @@ Pierre Lévy~\cite{levy1997collective}, a French philosopher who specializes in 
 
 The cyberspace allows individuals to remain interconnected regardless of their geographic location. It deterritorializes knowledge and supports the development of collective intelligence. With regard to the efficient mobilization of competences, the author has stated that an essential factor is to identify and understand the capabilities of the subjects in their individualities. The project of collective intelligence, described by Lévy is not only linked to cognition.  It is also a global project that presumes practical actions intended to mobilize the competences of individuals to provide mutual recognition and enrichment of those who are involved in this proposal ~\cite{levy1997collective}.
 
-Therefore, Lévy ~\cite{levy2001cyberculture} defines collective intelligence as a new sustainable way of thinking through social connections that become viable through the use of a network of people on the Web. This collective intelligence is distributed and coordinated in real time, which results in an efficient mobilization of skills, and the cyberspace favors its development. 
-
-%According to the author, we exercise our higher mental faculties when involved in living communities, with projects and conflicts. These communities, although sometimes hidden, are always present in our thoughts, providing interlocutors, intellectual instruments, and objects of reflection. The author also states that our intelligence has a more substantial collective dimension because we are ``beings of language.", meaning that language is an integral part of our existence.
-
-
-%Lévy ~\cite{levy1997collective} defines some conditions for the success of this collective knowledge construction, since the objective of collective intelligence is the mutual recognition and enrichment of people.  The collaboration of all members can disseminate and share knowledge within cyberspace. The cyberspace allows the identification of the subjects' capacities, understanding them in their individualities, and provides an environment in which they can contribute their knowledge, regardless of their geographic location ~\cite{levy1997collective}.
-
-
-%Lévy ~\cite{levy1997collective} also highlights the importance of the construction of the social link based on knowledge as the capacities of sharing individual knowledge is what would bring together individuals. For him, the core of the sense of the social bond is the economy of human qualities and the groups no longer would belong to a place or ideology. Therefore, the group identities would become identities of knowledge ~\cite{levy1997collective}. 
-
-%In the last decades, Web has become one of the widely used means for providing and sharing information. More recently, a major change has occurred in the way Web technology is being used in community to a tool for communicating and developing of communities.New social-sharing networks are transforming the Web technology from Web 1.0 (read-only) environment to Web 2.0 (read/write) technologies. 
-
-%Web 2.0 is a term that describes the trend in the use of the World Wide Web, where technologies and applications are designed with the aim of enhancing creativity, shared information, and, above all, collaboration among users. According to Tim O'Reilly ~\cite{o2007web},  one of the creators of the term, Web 2.0 represents a change to an Internet as a platform, with a set of principles and practices. For the author, the main principles of Web 2.0 are: i) the Web as a working platform; ii) the reinforcement of collective intelligence, iii) the management of databases, iv) the limitation of software upgrades, v) the introduction of simpler programming models, vi) simplicity;  vii) not limiting the software to a single device, and viii) valuing the experiences among user. These practices highlight the development of applications that take advantage of the effects of the network to become better the more they are used by people, taking advantage of collective intelligence. 
-
-%Wikis are prominent applications in the Web 2.0. A Wiki is used to designate a collection of hypertext documents that support the collaborative production of content through the use of a browser. The term also represents the expression social software, which includes blogs, mailing lists, forums and systems of distance learning, among others.
-
-%The first wiki, made available on the web in 1995, was created by Ward Cunningham and is known as the Portland Pattern Repository. Cunningham's idea was to develop a site where users themselves could generate content. With the success of the system and due to the open source feature, several clones emerged and eventually demonstrated the diversity of applications that wikis could have. Many of this software have the GNU GPLii license that allows copy, redistribution and free edition of content. Wikis have several purposes: they can be used as dynamic websites, project and document management tools and especially as dynamic knowledge bases being adaptable to diverse environments such as companies, schools, universities, civil society organizations and the web itself.
-
+Therefore, Lévy ~\cite{levy2001cyberculture} defines collective intelligence as a new sustainable way of thinking through social connections that become viable through the use of a network of people on the Web. This collective intelligence is distributed and coordinated in real time, which results in an efficient mobilization of skills, and the cyberspace favors its development.
 
 \section{\hspace*{3pt} The Wikipedia}
 
@@ -229,14 +192,12 @@ A study by Wilkinson \& Huberman ~\cite{wilkinson2007assessing} indicated that t
 The thousands of volunteers who contribute to the project make the site an environment of intense social interaction, in which each user fulfills specialized functions, according to their interest, availability and eventually the bureaucratic role occupied in the Wikipedia project. 
 
 
-
 Seeking to increase the reliability of content built in a collective and collaborative environment, Wikipedia has created a rigid organizational structure. 
-%For instance, those who have been registered for more than 45 days and have contributed to more than 100 articles have the right to vote on important decisions within the project, such as the exclusion of an article that is considered to be of little relevance or the election of the topic that will be highlighted on the main page site for a week. 
+
 Note that, as Tapscott and Willians \cite{tapscott2008wikinomics} affirm, collaborative production mixes elements of hierarchy and self-organization and is based on meritocratic principles of organization.
 
 The editing community enforces specific codified rules designed to ensure accuracy and prevent bias in articles. A study comparing the efficiency of various scientific subjects in Wikipedia and Encyclopaedia Britannica found that while imprecisions were not infrequent, they occurred at similar rates between the two ~\cite{giles2005internet}. In particular, a Wikipedia science article contained an average of four mistakes, while an Encyclopaedia Britannica article included only three. 
 As a matter of fact, Encyclopaedia Britannica currently has about 65,000, while English Wikipedia has approximately 5.4 million articles totaling 1.8 billion words. 
-
 
 
 The Wikipedia is a free and online encyclopedia where all readers can update their content by including and editing their articles. Instead of following a peer review process by experts, Wikipedia articles are available for revisions and enhancements by readers. In his bibliographical review on the use of Wikipedia in Computing Science researches,  Wikipedia is a  valuable resource with broad functionalities.  In \cite{medelyan2009mining} it is demonstrated how researchers had developed sophisticated techniques for extracting knowledge from different perspectives:
@@ -357,18 +318,6 @@ These are just examples of small fragments in Wikipedia's categorization structu
 \end{figure}
 
 
-
-
-%\subsection{\hspace*{3pt} Wikidata}
-
-%Vrandecic \cite{vrandevcic2014wikidata} presents the Wikidata project as a free, collaborative, multilingual, structured data collection project to support Wikipedia and other initiatives. Wikidata differs from Wikipedia because in Wikipedia the content of articles is written in natural language, while the purpose of Wikidata is to collect structured data that can be reused by other systems, such as Wikipedia itself. 
-%The central purpose of Wikidata in its conception was to serve as a knowledge base for the different editions of Wikipedia. The author cites an example of the demographic data present in articles about places: in Wikipedia, updating the population of a city must be done manually in the text of the article, for each language. With Wikidata, Wikipedia articles can reference the ``population" property of the city, and it is automatically synchronized. 
-
-%All Wikidata items are identified by URIs using Semantic Web and Linked Data standards, returning the data in RDF and JSON formats. Douglas Adamsn, british writer, is identified by \gls{uri} \url{https://www.wikidata.org/entity/Q42}. Wikidata is connected to external datasets using URIs from repositories such as IMDb (Internet Movie Database) and Music-Brainz, as well as standards such as ISBN for book identification, ICD-9 for diseases, and ISO 639 for languages. The properties of an entity enable the addition of external sources that corroborate the verifiability of such information. In the Douglas Adams example, the property ``alma mater" has the value University of Cambridge, referencing as one of the sources of this information the page \url{http://www.nndb.com/people/731/000023662}. The different names by which an entity can be referenced are values of the ``Also known as" property, which can be used in Entity Disambiguation tasks. All Wikipedia articles in different languages that describe the same item are related to Wikidata, making it easier to obtain multilingual textual content.
-
-
-
-
 \subsection{\hspace*{3pt} DBpedia}
 
 As described directly on the DBpedia about page\footnote{url{https://wiki.dbpedia.org/about}} DBpedia is 
@@ -389,55 +338,4 @@ Therefore, the present work is focussed on using DBpedia for the entity named re
 
 \gls{sparql} is a query language capable of retrieving and manipulating data stored in the \gls{rdf} format that is the basis of the OWL language. \gls{rdf} is a labeled and directed data format used to represent information on the Web \cite{prud2008sparql}. 
 
-
-%As a query language, \gls{sparql} is data-oriented, that is, there is no inference in the language itself. A SPARQL query consists of three parts \cite{arenas2011querying}:
-
-%\begin{itemize}
-%\item Pattern matching: includes several useful features for combining patterns, pattern matching, nesting, filtering, and the ability to choose the data source.
-
-%\item Solution modifiers: allows modifying the values of the standard output by applying the classic operators, such as PROJECTION, LIMIT, DISTINCT, ORDER and OFFSET.
-
-%\item Output: can be of different types, such as boolean, selections, graphs and resource descriptions.
-
-%\end{itemize}
-
 In the context of this research, our approach exploits a small part of what the SPARQL language can provide. We  navigate in the DBpedia hierarchy to retrieve broader semantic relations between the entities and its categories. 
-
-%\subsubsection{Syntax}
-
-%SPARQL has hundreds of elements that make up its syntax\cite{beckett1sparql}.  e will cover only the most essential elements in the context of this work. The purpose is to convey a fundamental notion about the construction and operation of SPARQL queries.
-%A triple in RDF contains three components \cite {carroll2004resource}:
-
-%\begin{itemize}
-
-
-%\item Subject: can be individuals or ontology classes.
-%\item Predicate: represent relationships and can be object properties, primitive properties, or some type of resource defined by the RDF version.
-%\item Object: they are values of relations, they can be individuals, classes or primitive data.
-
-%\end{itemize}
-
-%A triple in \gls{rdf}  is conventionally written in the sequence: subject, predicate, object. The predicate is also known as triple property \cite{beckett1sparql}. The subject and the object are names for two ``things" in the world, and the predicate is the name of a relationship between the two.
-
-
-%The syntax for triples \gls{sparql}  queries is based on triple \gls{rdf} , composed of a subject, a predicate, and an object:
-%\\
-
-%\begin{verbatim}
-%PREFIX plants: <PLANT_ONTOLOGY_URI>
-%SELECT * WHERE
-%{
-%?name plants:family "Rosaceae"
-%}
-%\end{verbatim}
-
-%In the SPARQL query above <PLANT \_ONTOLOGY\_URI> \gls{uri}, the resource identifier of the ontology. PREFIX is the keyword that declares plants as an alias of the URI.  ?name is the subject, plants:family is the predicate and  ``Rosacea'' is the object. In this example, all the subjects present in the database whose class (predicate) of type \textit{family} has the value equals to ``Rosacea"
-
-
-
-
-%\section{\hspace*{3pt}Evaluation of Classifiers}
-%\label{sec:evaluation-of-classifiers}
-%\subsection{\hspace*{3pt}Precision and Recall}
-%\subsection{\hspace*{3pt}F-Measure}
-%\subsection{\hspace*{3pt}Cross-Validation}

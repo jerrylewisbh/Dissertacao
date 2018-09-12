@@ -1,14 +1,17 @@
 \chapter{\hspace*{3pt} Methods}
 \label{chapter:methodology}
 
-Automatic text classification consists of automatically assigning a predefined label to textual documents. The use of text classification can be observed in (i) organization through routing, filtering and metadata assignments; (ii) analysis, through the statistics of the labels assigned to the documents or through descriptive and predictive analyzes; and (iii) knowledge extraction, through a set of rules or values that summarize the patterns present in the collection of documents. 
-Moreover, information retrieval engines which correspond to many of the use of the Internet for locating information and gaining knowledge, make use of text classification algorithms to rank the most relevant documents according to a user's query ~\cite{Manning:2008}.
+%Automatic text classification consists of automatically assigning a predefined label to textual documents. The use of text classification can be observed in (i) organization through routing, filtering and metadata assignments; (ii) analysis, through the statistics of the labels assigned to the documents or through descriptive and predictive analyzes; and (iii) knowledge extraction, through a set of rules or values that summarize the patterns present in the collection of documents. 
+%Moreover, information retrieval engines which correspond to many of the use of the Internet for locating information and gaining knowledge, make use of text classification algorithms to rank the most relevant documents according to a user's query ~\cite{Manning:2008}.
 
-To perform automatic text classification, expert systems or machine learning algorithms may be used. In the first case, one or more domain experts create a set of conditional rules based on the presence or frequency of a set of words or sentences that define the class of a document. However, manually generated rules are complicated to create or update for different applications or domains and are dependent on the presence and effort of domain experts or knowledge engineers~\cite{Manning:2008}. 
+%To perform automatic text classification, expert systems or machine learning algorithms may be used. In the first case, one or more domain experts create a set of conditional rules based on the presence or frequency of a set of words or sentences that define the class of a document. However, manually generated rules are complicated to create or update for different applications or domains and are dependent on the presence and effort of domain experts or knowledge engineers~\cite{Manning:2008}. 
 
-For that reason, automatic text classification is one of the most studied and used areas to accomplish the tasks mentioned above. 
+%For that reason, automatic text classification is one of the most studied and used areas to accomplish the tasks mentioned above. 
 
-This chapter presents in detail the steps of our approach for the extraction and representation of document features based on the Wikipedia category graph. The implementation details for filtering and building the graph are also presented. Finally, we perform a graph-theoretic analysis of the \gls{wcg} to describe the topology of the graph and to evaluate whether graph-based techniques for semantic analysis and information retrieval can be applied to it.
+This chapter presents in detail the steps of our approach for the extraction and representation of document features based on the Wikipedia category graph. The implementation details for filtering and building the graph are also presented.
+
+
+%Finally, we perform a graph-theoretic analysis of the \gls{wcg} to describe the topology of the graph and to evaluate whether graph-based techniques for semantic analysis and information retrieval can be applied to it.
 
 
 \section{\hspace*{3pt} Approach} \label{sec:approach}
@@ -71,7 +74,7 @@ The algorithm \ref{alg:fingerprint-generation} begins with the categories assign
 
 To define the problem of automatically assigning categories to resources let $D = \{d_1,d_2,d_3,\ldots\,d_n\}$ be a finite set of documents and $C = \{c_1,c_2,c_3,\ldots\,c_n\}$ a finite set of predefined categories.
 The problem is finding a function $f: D \times C \mapsto \mathbb{R}$ that assigns a score $s$ for each pair 
-$\{d_i, c_i\} \in  D \times C $. The document $d_i$ is assigned to a class $c_i$ if $s$ is greater than predefined threshold, $\{d_i, c_i\} > \tau$. 
+$\{d_i, c_i\} \in  D \times C $, where the membership value of  $s$ specifies the degree of relevance of the category $c_i$ to the document $d_j$.
 
 
 Our approach consists of navigating in the Category Graph from each category extracted in the previous step towards the top of the graph by all the shortest paths between the category and the main topics.  
@@ -90,9 +93,13 @@ The \gls{vsm} is a simple, traditional and practical model that makes it possibl
 
 In this method, the documents of a collection $D$ are represented in the VSM as points in a multidimensional Euclidean space, where each dimension corresponds to a distinct term in that collection. The set $T$ of distinct terms of collection $D$, called vocabulary collection of $D$, is obtained in a process called lexical analysis.
 
+
+This type of representation is widely used in Information Retrieval, both in tasks of textual retrieval and ordering of documents by relevance (ranking), as well as in document classification tasks. The use of vector representation makes possible the use of any algebraic operation applicable to this type of structure, making it possible to compare the similarity between two documents, as explained by Salton\cite{Salton:1975}.
+
+
 Each term of the set $T$ can be composed of only one word (unigrams), several words (bigrams, trigrams or n-grams) or sentences, and has an associated weight to determine its degree of importance ~\cite{salton1988term}.
 
-Given a document $d_i \in D$, this document is formally represented in the VSM as follows:
+Given a document $d_i \in D$, this document is formally represented in the \gls{vsm} as follows:
 
 $d={w_{i1},w_{i2},w_{i3},\ldots,w_{i|T|}}$,
 

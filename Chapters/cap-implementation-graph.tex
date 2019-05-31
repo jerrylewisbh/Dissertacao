@@ -1,0 +1,61 @@
+
+\chapter{Representing the Underlying Structure of the WCG}
+\label{app:representing-structre}
+
+In the scope of this thesis, finding the paths between entities and a set of top categories requires that the structure of Wikipedia Category be represented so that computer programs can navigate on it. 
+Therefore, the proposed method needed a way of representing the available information about the Wikipedia structure as a graph. The \gls{wcg} consists of Wikipedia pages with the “Category:” prefix such as “Category:Law.” The graph is extracted by finding links between category pages. In other words, a category page is liked to another category page that is broader in scope.
+
+To perform this task, a dump of the files enwiki-latest-page.sql, enwiki-latest-category.sql, and enwiki-latest-categorylinks.sql, was obtained in October 2016 \footnote{\url{https://dumps.wikimedia.org/enwiki/20161020\/}}.
+
+These files consist the structure of Wikipedia represented in a MySQL relational database.
+
+The file enwiki-latest-categorylinks.sql.gz contains the information needed to extract the categories-categories and categories-articles relations. The information is represented in the file as INSERT statements where all entries are on the form: \\
+\textit{
+(cl\_from,cl\_to,cl\_sortkey,cl\_timestamp,cl\_sortkey\_prefix,cl\_collation,cl\_type). }
+
+
+
+\begin{table}[H]
+\begin{adjustbox}{width=1\textwidth}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Field               & Description                                                                                                   \\ \midrule
+cl\_from            & Stores the page.page\_id of the article where the link was placed                                             \\
+cl\_to              & Stores the name (excluding namespace prefix) of the desired category. Spaces are replaced by underscores (\_) \\
+cl\_sortkey         & Stores the title by which the page should be sorted in a category list.                                       \\
+cl\_timestamp       & Stores the time at which that link was last updated in the table.                                             \\
+cl\_sortkey\_prefix & either an empty string if a page is using the default sortkey or a human readable version of cl\_sortkey.     \\
+cl\_collation       & What collation is in use.                                                                                    \\
+cl\_type            & What type of article is this (file, subcat (subcategory) or page (normal page)).                              \\ \bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{Description of fields in INSERT statements for the table categorylinks.}
+\label{tab:categorylinks}
+\end{table}
+
+Considering the goal of this process is to represent the underlying Wikipedia category structure as a graph, Neo4J \footnote {\url{https://neo4j.com/}}, was chosen because it is a graph-based database that provides a free version and proper documentation, as well as an active community. 
+
+Even though only the category graph is needed, it was necessary to extract the page file as well, since the identifier of the categories refers not to the categories themselves, but to the page about the categories. For this step, a parser was developed in python. First, the file containing all the pages of Wikipedia is scanned and, through a regular expression, the data is filtered.
+
+The output is a CSV file with three fields: page identifier, page title, and namespace. Namespaces are a Wikipedia internal classification system to identify what a page refers to, such as an article, a category, user page, or other classifications. Articles are identified with namespace 0 and categories with namespace 14, for example.
+The second step is to go through the file that corresponds to the categories of Wikipedia. The output of this step is a CSV file with two properties: page identifier and category title. From this file, it is possible to link the categories and the corresponding pages. The third and final step of this step is the extraction of links between categories. The data is extracted from the file of the enwiki-latest-categorylinks.sql file, and the output is a CSV file with two properties: page identifier for the source category and page identifier for the destination category.
+
+Administrative categories are used for Wikipedia internal organization and maintaining. They were ignored during processing and are not in the final files. Examples of these categories include, but are not limited to, categories that begin with \textit{Articles\_needing\_} and \textit{WikiProject\_}, named hidden categories.
+
+
+These categories provide a tool for grouping pages with features in common so that publishers can quickly identify where improvements are needed. Although these categories are essential for the maintenance and administration of the encyclopedia, they are not relevant to end users and were removed in the context of the work for two reasons: 1) They add complexity to the structure of the graph 2) They do not semantically describe articles associated to them and therefore do not add relevant information to the paths.
+
+The ideal paths between a set of categories have no hidden categories. Thus, the hidden categories must be removed in such a way that the information is not lost because a hidden category can be a subcategory of a visible category or they can have visible categories as their subcategories. Hidden categories were removed and the paths were reconstructed the paths by linking the child nodes of the hidden category to its parent. 
+
+After processing the Wikipedia dump files, it is possible to generate the complete graph of categories. First, all the pages referring to categories are imported in Neo4J, and then the relations between them are imported. The generated graph has only a $Category$ concept with the $categoryName$ and $categoryID$ properties and a $SUBCATEGORY\_OF$ relationship type, with no properties.
+
+The example below illustrates how \gls{ir} works in a Neo4J graph.
+
+The example returns all nodes of type $Category$  that are connected to another node of type $Category$ that has the property $CategoryName$ with the value equals to Carnivores for the $SUBCATEGORY\_OF$ property. In this case, all subcategories of Carnivores are retrieved.
+
+\begin{verbatim}
+MATCH (a: Category) - [r: SUBCATEGORY_OF] ->
+(b: Category {categoryName: ""}) RETURN a
+\end{verbatim}
+
+

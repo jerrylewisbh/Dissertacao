@@ -1,32 +1,63 @@
-\chapter{\hspace*{3pt} Final Remarks, Limitations and Future Work}
+\chapter{\hspace*{3pt} Final Remarks, Limitations and Future Works}
 \label{chapter:conclusion}
 
-This is the final chapter of our thesis and covers our conclusion for the project and desirable further works. The chapter starts with the concluding remarks regarding our project, before mentioning some limitations and the desired future works that might improve the classification results of our method.
+This, the final chapter of the thesis, provides the conclusion for the outlined research.  It begins with the final remarks on the project, before mentioning some limitations and desired future work that might improve the classification results of the proposed method.
 
 \section{\hspace*{3pt}  Final Remarks}
-The primary objective of the research conducted and described in this thesis is the construction of a method for automatic classification of textual resources in the Web that does not depend on the effort of domain experts.
 
-The central motivation to reduce the need for experts to mediate the classification process is the fact that the amount of information generated on the Web grows as more people use the platform.
+This thesis presented the construction of a method for the automatic classification of textual resources on the Web, which exploits the collective knowledge of the Wikipedia contributors rather than the effort of domain experts.
 
-As a consequence, most efforts to classify and organize documents manually on the Web have proven to be unviable and have become extinct.
+The central motivation to reduce the need for experts to mediate the classification process is the fact that the amount of information generated on the Web grows as more people use the platform. As a consequence, most efforts to classify and organize documents manually on the Web have proven to be unviable and have become extinct. Simultaneously, there is a great movement of people who come together to create and organize content on the Web collaboratively.
 
-On the other hand, there is a great movement of people who come together to create and organize content on the Web collaboratively.
+This form of classification has the advantage of being dynamic and representing the way people organize the areas of knowledge. It is robust to any change in facts, people, places, etc., and can be quickly edited by contributors. 
 
-Wikipedia, the largest existing online encyclopedia is an outstanding example of this effort. In addition to creating articles, users are responsible for the categorization system, a complex structure. 
+In this context, the decision was made to develop a method for representing and classifying Web documents based on the top-level categories of Wikipedia, since these are easy for regular users to understand, and can be easily modified to serve specific purposes.
 
-There are a finite number of categories that represent the whole Wikipedia content. These categories, as well as their subcategories, are not fixed and are maintained and curated by Wikipedia users. 
 
-This form of classification has the advantage of being dynamic and representing the way people organize the areas of knowledge, so that any change in facts, people, places, among others, it is quickly edited by contributors.
 
-In this context, we decided to create a classifier based on the top-level categories of Wikipedia because it is easy to understand for regular users' and because it can be easily modified to serve specific purposes.
+\section{\hspace*{3pt} Contributions}
 
-Given the complex structure of the Wikipedia category system, we decided to represent it in the graph, whose nodes represent the categories and the edges represent the ``is-sub-category-of" relationships.
+Given the complex structure of the Wikipedia category system, the decision was made to represent it as a graph whose nodes represent the categories and the edges represent the ``is-sub-category-of" relationships. For presenting a complex structure with several categories, many links, and cycles, it was necessary to perform an analysis of the topology of the category graph of Wikipedia, in order to verify whether this structure was suitable for the application of the proposed method.
 
-For presenting a complex structure with several categories, many links and cycles, it was necessary to perform an analysis of the topology of the category graph of Wikipedia, in order to verify if this structure is suitable for the application in our method.
+The analysis leads to the conclusion that the Wikipedia Category structure is similar to other semantic networks often used for \gls{nlp} applications. It was verified that the \gls{wcg} presents a small-world and scale-free behaviors. This finding supports the Wikipedia categorization scheme not only for the developed classification method but also for other \gls{nlp} and \gls{ir} applications.
 
-In chapter  \ref{chapter:graph} we describe the outcomes of this analyses, where we found out that the Wikipedia Category structure is similar to other semantic networks often used for \gls{nlp} applications. It was verified that the Wikipedia Category Graph 
+A new method for extracting features, representing and classifying documents in a three-steps processing chain was proposed. In this approach, the named entities present in the text are recognized, and the categories of those entities and aggregate the representation are extracted into a predetermined set of topics within Wikipedia categories. The main advantage of this approach is that it captures semantic information of texts, even if they are short. In this regard, it is different from the traditional approach that uses only word frequency without considering context.
+
+As one of the goal goals of this thesis comprises of allowing users of \gls{ir} applications to understand and make use of the classification, an experiment to verify that real users do indeed agree with the classification generated by the approach was carried out. The study involved 1,265 users of a  crowd-sourcing platform and 2,000 different texts extracted from ten Q\&A communities. The results showed that for most cases, users agree to a great extent with the classification generated by the developed method. Although the users did not agree with the automatic classification in some cases, it was observed that the classification made sense concerning the content of the texts. However, some subtleties regarding text details and transversal topics were not captured by users, who tended to make judgements based on the general context of the given text.
+
+
+A secondary technical contribution is TagTheWeb\footnote{\url{http://ww.tagtheweb.com.br}},  a public, documented\footnote{\url{http://documenter.getpostman.com/view/1071275/tagtheweb/77bC7K}} and open-source API capable of receiving any textual resource and processing each of the three phases described in the proposed approach.
+
+The task of extracting information from Wikipedia and representing it as a graph posed a substantial challenge for the course of this dissertation. Calculating the metrics needed to evaluate the topology of the \gls{wcg}, given its dimension, was computational costly and time-consuming. As a technical legacy, there are the \gls{wcg} snapshot from October of 2016 filtered and represented in Neo4J\footnote{\url{http://neo4j.com}} and graph-tools\footnote{\url{http://graph-tool.skewed.de}} and a dataset\footnote {\url{http://github.com/jerrylewisbh/TagTheWeb}} containing all nodes of the \gls{wcg} and the measures of centrality, indegree, outdegree, clustering coefficient, and PageRank, that can be used to alleviate this task in future works.
 
 \section{\hspace*{3pt}  Limitations}
 
+Despite an optimistic initial result, the reported research has some
+limitations. Because it is based on the extraction of named entities, if no entity is recognized in the text, classification is not possible.
+Moreover, if only one entity existed in the text, it could be said that the proposed method generates a classification for the entity, not for the context presented in the document.
 
-\section{\hspace*{3pt}  Future Work}
+Concerning the recognition of entities, the designed approach is dependent on a tool to recognize and link the entity to DBpedia. However, if entities are incorrectly recognized (especially when disambiguation fails), the classification may be incorrect. This problem is intensified in the case of short texts.
+
+Another concern is regarding the topics distribution in Wikipedia. For example, that are many more categories associated with History than with Games. This could result in a biased or unbalanced categorization. 
+
+An additional limit of this research is the dimensionality of the document representation. Limiting the classification to the 19 top-level categories of Wikipedia made it possible to run the experiments, but, as a consequence, all results and observation are directly related to the content expressed in these categories.
+
+Regarding the evaluation, only 200 texts from each one of the ten Q\&A communities were used, due to time and cost constraints. The results and conclusions are based on the observations on these ten communities.  Further analyzes in a larger number of more diverse communities and in other contexts are necessary to produce more reliable results regarding the quality of the classifier.
+
+
+\section{\hspace*{3pt}  Future Works}
+
+An expansion of the research presented in this thesis would be to study the use of
+other sets of categories as the main topics in the representation and classification of documents, according to specific contexts of use.  This study was limited to Wikipedia's broader categories, but, given the structure of the graph, the developed method could be applied to any subset of categories at any level of depth.  
+
+Considering that Wikipedia and DBpedia are available in a wide variety of languages, it is also desirable to expand the experiments to verify the quality of the classification in different Wikipedias, since not all versions are as broad and complete as Wikipedia in English.
+
+Studying methods for cleaning, pruning and organizing this structure is an opportunity of future work that could reduce the complexity of the graph and improve the results. 
+Since the concept ``subcategory of ” is not well defined and there is no policy to guide the users who contribute, the category graph is far from perfect: there are many duplications, misplaced categories, excessive fragmentation and cycles in the way. This improvement would bring up a more clear and better distribution of categories.
+
+
+
+
+
+
+

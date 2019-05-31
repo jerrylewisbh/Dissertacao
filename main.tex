@@ -136,18 +136,21 @@
 \makeglossaries
 
 
-\hyphenation{wiki-pe-dia} % like en-cy-clo-pe-dia
+\hyphenation{wiki-pe-dia} %¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬0o9xdssssssss like en-cy-clo-pe-dia
 
 \begin{document}
  	
     \pagestyle{empty}
-    %\include{Pre/capa}
-    %\include{Pre/folhaDeRosto}
+    \include{Pre/capa}
+    \include{Pre/folhaDeRosto}
     \include{Pre/fichaCatalografica}
     \pagestyle{plain}
     \pagenumbering{roman}
-    %\include{Pre/dedicatoria}
-    %\include{Pre/agradecimento}
+    \begingroup
+    \singlespacing
+        \include{Pre/dedicatoria}
+       % \include{Pre/agradecimento}
+    \endgroup
     \include{Pre/abstract}
     \include{Pre/resumo}
     
@@ -165,8 +168,9 @@
     %Capítulos
     \setcounter{page}{1}
     \input{Chapters/cap-intro}
-	\input{Chapters/cap-concepts}
+    \input{Chapters/cap-wikipedia}
     \input{Chapters/cap-graph-analysis}
+    \input{Chapters/cap-concepts}
     \input{Chapters/cap-methodology}  
  	\input{Chapters/cap-experiments}
     \input{Chapters/cap-related-works}

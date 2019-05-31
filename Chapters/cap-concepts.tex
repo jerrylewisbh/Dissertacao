@@ -2,28 +2,27 @@
 \label{chapter:related-concepts}
 
 
-This chapter introduces the theoretical concepts used to contextualize the research described in this thesis.
-
-We provide general information about natural language processing (NLP) techniques that apply to our categorization method. 
-The concepts related to Information Retrieval and Documents Representation are essential to understanding the tasks applied in the proposed solution to extract the entities and the categories from the text-resources on the Web.
-We also present an overview of the concept and methods for the automatic classification of textual resources, as it is the primary goal of the research presented in this thesis. 
-
-The concepts related to Collective Intelligence and Collective construction of Knowledge are essential for understanding the motivation to choose an approach that uses the knowledge of the contributors of Wikipedia, rather than experts. Finally, we present a description of Wikipedia and its features as it is central to the understanding the organization of this body of knowledge, as well as the possibilities and challenges that emerge from decoding its underlying structure. 
+This chapter introduces the theoretical concepts used to contextualize the applied approach for classifying documents on the Web.
+The concepts related to Information Retrieval (\gls{ir}) and Documents Representation are essential to understanding the tasks applied in the proposed solution to extract the entities and the categories from text-resources online.
+An overview of the concept and methods for the automatic classification of textual resources, the primary goal of the research presented in this thesis, is presented below. 
 
 
+%\section{\hspace*{3pt}Natural Language Processing - NLP}
 
-\section{\hspace*{3pt}Natural Language Processing - NLP}
+%\gls{nlp} consists of the development of mathematical and computational models of various aspects of language, to make possible the development of a wide range of systems that rely on information expressed in natural language \cite{joshi1991natural}.
+
+%Natural language is any language developed naturally by the human being, in an unpremeditated way, as a result of the natural ease of language processing by the human intellect \cite{chomsky1975logical}. Spoken, written and sign languages are examples of natural languages. 
+
+%\gls{nlp} has the general objective of processing human language so that it is understandable by the computer. Among the essential areas of \gls{nlp} we can highlight the recognition of voice, the recognition of writing and the reproduction of voice from the text. \gls{nlp} encompasses several and complex areas of knowledge, hence the  researches in this field are interdisciplinary, involving concepts of computer science, linguistics, logic, and psychology.
+
+%One of the uses of \gls{nlp} is the extraction of meaning from unstructured resources so that they can be used in a structured way in computational application.
 
 
-\gls{nlp} consists of the development of mathematical and computational models of various aspects of language, to make possible the development of a wide range of systems that rely on information expressed in natural language \cite{joshi1991natural}.
+\section{\hspace{3pt}Information Retrieval}
 
-Natural language is any language developed naturally by the human being, in an unpremeditated way, as a result of the natural ease of language processing by the human intellect \cite{chomsky1975logical}. Spoken, written and sign languages are examples of natural languages. 
+\gls{ir} systems are mostly known for their searching ability, where a user states an information need and the system provides the user with a response to this information need in return. \gls{ir} is a large academic field and encompasses several topics such as browsing or filtering documents, processing of retrieved documents and clustering or classifying documents according to their content. In \cite{Manning:2008}, Manning defines \gls{ir} as finding material (usually documents) of an unstructured or semi-structured nature (usually text) that satisfies an information need from within large collections (usually stored on computers).
 
-\gls{nlp} has the general objective of processing human language so that it is understandable by the computer. Among the essential areas of \gls{nlp} we can highlight: the recognition of voice, the recognition of writing and the reproduction of voice from the text. \gls{nlp} encompasses several and complex areas of knowledge, hence the  researches in this field are interdisciplinary, involving concepts of computer science, linguistics, logic, and psychology.
-
-One of the uses of \gls{nlp} is the extraction of meaning from unstructured resources so that they can be used in a structured way in computational application.
-
-Structured resources are machine-readable resources that encode relationships of various types according to the level of information \cite{hovy2013collaboratively}. Structured resources are of high quality as they are built from the knowledge of domain experts, lexicographers, and linguists. However, structured resources are limited because they require significant efforts in creation and updating. Because they are built manually, they depend on the availability of experts to extend their coverage and to keep them up to date on recent events. Moreover, knowledge encoded in one language is not transferable to others, requiring a new effort for each new language.
+Structured resources are machine-readable resources that encode relationships of various types according to the level of information \cite{hovy2013collaboratively}. They are of high quality as they are built from the knowledge of domain experts, lexicographers, and linguists, but limited because they require significant efforts in creation and updating. Because they are built manually, they depend on the availability of experts to extend their coverage and to keep them up to date on recent events. Moreover, knowledge encoded in one language is not transferable to others, requiring a new effort for each new language.
 
 The most common structured resources are:
 
@@ -34,68 +33,71 @@ The most common structured resources are:
 \item Ontologies: knowledge models that include concepts, relations of different types, rules and axioms.
 \end{itemize}
 
-Unstructured resources are collections of texts that have no formalized knowledge and are machine readable only as sequences of characters and words. Different statistical models can extract knowledge from unstructured collections, and the massive amount of texts available on the \gls{www} enables the construction of knowledge bases of excellent coverage. However, they are limited by the lack of texts that demonstrate common-sense knowledge \cite{hovy2013collaboratively}. Also, statistical models are not able to issue knowledge with quality equivalent to the resources built by specialists.
+Unstructured resources are collections of texts that have no formalized knowledge and are machine readable only as sequences of characters and words. Different statistical models can extract knowledge from unstructured collections, and the vast number of texts available on the \gls{www} enables the construction of knowledge bases with extensive coverage. However, they are limited by the lack of texts that demonstrate common-sense knowledge \cite{hovy2013collaboratively}. Also, statistical models are not able to issue knowledge with quality equivalent to the resources built by specialists.
 
-The limitations of unstructured resources are complementary to the limitations of structured resources. While unstructured resources enable broad coverage with low quality, structured resources have high quality but low coverage. Semistructured resources constructed collaboratively on the \gls{www} encode the knowledge voluntarily made available by users of these resources, covering different areas of knowledge and having quality comparable to that obtained from specialists. The semi-structured resources mentioned by the authors are Wiktionary, Flickr, Twitter, Yahoo! Answers and, with greater emphasis on the Wikipedia \cite{hovy2013collaboratively}.
+The limitations of unstructured resources are complementary to those of structured resources. While unstructured resources enable broad coverage with low quality, structured resources have high quality but low coverage. Semi-structured resources constructed collaboratively on the \gls{www} encode the knowledge voluntarily made available by users of these resources, covering different areas of expertise and having quality comparable to that obtained from specialists. Examples of semi-structured resources are Wiktionary, Flickr, Twitter, Yahoo! Answers and, Wikipedia \cite{hovy2013collaboratively}.
 
-Nowadays, most of the information in government, industry, business, and other institutions are stored electronically on the Web, in the form of semi-structured or restructured resources.
+Nowadays, most of government, industry, business, and other institutions information are stored electronically on the Web as semi-structured or e-structured resources.
 
-In this context, the existence of \gls{ir} systems becomes indispensable to assist users in the process of locating information that is relevant in collections of unstructured or semi-structured data (e.g., web pages, documents, images, video, etc.).  
+In this context, the existence of \gls{ir} systems becomes indispensable in assisting users in the process of locating relevant information in collections of unstructured or semi-structured data (e.g., web pages, documents, images, videos).  
 
 
-\section{\hspace{3pt}Information Retrieval}
+A system can increase its precision when addressing the users' information need if it indexes well-represented features of the text. As the collection of documents expands, automatic techniques that can extract these features become crucial. Text classification techniques can provide an representative output of a research document, allowing for \gls{ir} systems to handle the indexing and retrieval process.
 
-\gls{ir} systems are mostly known for their searching ability, where a user states an information need and the system provides the user with a response to this information need in return. \gls{ir} is a large academic field and encompasses several topics like browsing or filtering documents, processing of retrieved documents and clustering or classifying documents according to their content \cite{Manning:2008}, Manning defines \gls{ir} as finding material (usually documents) of an unstructured nature (usually text) that satisfies an information need from within large collections (usually stored on computers).
 
-A system can increase its precision when retrieving the users' information need if it indexes well-representing features of the text. As the collection of documents expand, automatic techniques that can extract these features become crucial.  \gls{tc} techniques can provide an output that can be representative of a research document, allowing for \gls{ir} systems to handle the indexing and retrieval process.
-
-In order to reduce the complexity of the documents and make them easier to handle for \gls{ir} systems, the document have to be transformed from the full text version to a compact representation which describes the contents of the document \cite{meadow1992text}. This task is named document representation and it is crucial for \gls{tc} approaches. 
+In order to reduce the complexity of the documents and make them easier to handle for \gls{ir} systems, each document has to be transformed from the full-text version to a compact representation, which describes its contents \cite{meadow1992text}. This task of document representation is crucial for text classification approaches. 
 
 \subsection{\hspace*{3pt}Documents Representation}
 
-Document representation has substantial importance when dealing with \gls{tc}.
+%Document representation has substantial importance when dealing with text classification.
 
-Plain texts are usually not used directly by classification algorithms.  The documents are processed and transformed so that they can represent semantic content of the text optimized for numeric processing.   
-
-Most \gls{tc} methods use the \gls{bow} approach to represent documents. \cite{Lan:2009} \cite{Manning:2008}. The categorization takes into account the presence or the absence of key terms in the document-terms matrix that represents each document, as stated by Sebastiani \cite{Sebastiani:2002}.
-
-The reasons for using this approach is the simplicity, efficiency and relative effectiveness of the \gls{bow} paradigm.
-
-However, the \gls{bow} method fails to take into account relevant aspects of the text that is being represented. Semantic relationships between key terms are ignored, as well as the order in which the terms appear \cite{Gabrilovich:2005, Lan:2009}.
-
-The \gls{bow} approach ignores essential semantic relations between the terms \cite {Hu:2008}.
-
-In fact, elements like ``White House" or ``Bill Gates" are represented in the BOW as unrelated words. In analyzing the BOW representation of a given document in which the words Bill and Gates occur, one might suggest that the document talks about accounting, regarding the word Bill or construction because of the word Gates. For a computer program, it would be challenging to associate both words.
-Nevertheless, if the representation of the same document contains the set of words ``Bill Gates" as a term, it would be easier for the classifier to make a correct association.\cite{bekkerman2004using}.
+Plain texts are usually not used directly by classification algorithms.  The documents are processed and transformed to represent the semantic content of the text, optimized for numeric processing.
 
 
-As a consequence, if two documents use different sets of keywords to describe the same topic, they can be classified as being of different categories, even though the keywords used by both are probably synonymous or semantically associated in some other form \cite {Hu:2009}.
+The \gls{vsm} is a simple, traditional and practical model that makes it possible to represent documents as vectors and to perform any algebraic operations to compare them ~\cite{salton1988term}.
 
-Amidst the alternative representations that use features of the text itself, most commons are those that use sequential co-occurrence of n terms (n-grams) and non-sequential co-occurrences of n terms (termsets). 
+In this method, the documents of a collection $D$ are represented in the \gls{vsm} as points in a multidimensional Euclidean space, where each dimension corresponds to a distinct term in that collection. The set $T$ of distinct terms of collection $D$, called vocabulary collection of $D$, is obtained in a process called lexical analysis.
 
-Other approaches have explored features that are not directly extracted from the text. As an example, we can mention the growing interest in \gls{fg} techniques known as Document Expansion or Document Enrichment, through which new terms are added to documents, enhancing the \gls{bow} representation by inserting more information in the document-term matrix \cite {Gabrilovich:2005}.
 
-Numerous methods that use Feature Generation have achieved excellent results in Text Classification through the extraction of semantic relations such as synonymy, hyponymy and associative relations between concepts, present in Encyclopedias, Thesaurus, Ontologies, Web Pages and other sources. \cite{Gabrilovich:2005,Gabrilovich:2006,Hu:2008,Wang:2008, Wang:2009}.
+This type of representation is widely used in \gls{ir}, in tasks of textual retrieval, ordering of documents by relevance (ranking), and text classification tasks. The use of vector representation makes the use of any algebraic operation applicable to this type of structure possible, enabling comparisons 
+%of the similarities 
+between two 
+documents, as explained by Salton \cite{Salton:1975}.
 
-Since many texts used in the Web (search queries, tweets, questions, and answers) are short, unstructured and ambiguous, there is a need for a methodology capable of analyzing the short text semantically, detecting possible entities present in the sentence and making the disambiguation of terms, overcoming the gaps of tradition methods.
+Each term of the set $T$ can be composed of only one word (unigrams), several words (bigrams, trigrams or n-grams) or sentences, and has an associated weight to determine its degree of importance ~\cite{salton1988term}.
 
-In this context, to capture the semantic information related to the documents present on the Web, the approach described in this thesis employs the named entities found on the text as the bases of the representation of the documents.
+Given a document $d_i \in D$, this document is formally represented in the \gls{vsm} as follows $d={w_{i1},w_{i2},w_{i3},\ldots,w_{i|T|}}$, where $T$ is the vocabulary set of the collection $D$ and $w_{ij} (1 \le j \le |T|)$ is the weight of the term $t_j$ in the document $d_i$, such that $w_{ij} = 0$ if the term $t_j$ does not occur in the document $d_i$.
+
+To represent the text in the \gls{vsm}, most text classification methods use the \gls{bow} approach to represent documents \cite{Lan:2009} \cite{Manning:2008}. The categorization takes into account the presence or the absence of key terms in the document-terms matrix %representing each document
+\cite{Sebastiani:2002}.
+
+The reasons for using this approach is the simplicity, efficiency and relative effectiveness of the \gls{bow} paradigm. However, the \gls{bow} method fails to take into account relevant aspects of the text that is being represented. Semantic relationships between key terms are ignored, as well as the order in which the terms appear \cite{Gabrilovich:2005, Lan:2009}. The \gls{bow} approach ignores essential semantic relations between the terms \cite {Hu:2008}.
+
+Elements of bipartite words such as ``White House" or ``Bill Gates" are represented in the BOW as unrelated words. In analyzing the BOW representation of a given document in which the words ``bill" and ``gates" occur, one might suggest that the document talks about accounting for a construction firm (the word ``bill" for accounting, and construction from ``gates"). For a computer program, it would be challenging to associate these words.
+Nevertheless, if the representation of the same document contains the set of words ``Bill Gates" as a term, it would be easier for the classifier to make a correct association. \cite{bekkerman2004using}.
+
+
+As a consequence, if two documents use different sets of keywords to describe the same topic, they can be classified as being of different categories, even if the keywords used by both are synonymous or semantically associated in some other form \cite {Hu:2009}.
+
+Among the alternative representations that use features of the text itself, most common are those that use sequential co-occurrence of n terms (n-grams) and non-sequential co-occurrences of n terms (term sets). Other approaches have explored features that are not directly extracted from the text. The growing interest in \gls{fg} techniques known as Document Expansion or Document Enrichment, through which new terms are added to documents, enhancing the \gls{bow} representation by inserting more information in the document-term matrix \cite {Gabrilovich:2005} is an example of this. Numerous methods that use \gls{fg} have achieved verifiable results in text classification through the extraction of semantic relations such as synonymy, hyponymy and associative relations between concepts, present in encyclopedias, thesauri, ontologies, web pages and other sources \cite{Gabrilovich:2005,Gabrilovich:2006,Hu:2008,Wang:2008, Wang:2009}.
+
+Since many texts used in the Web (search queries, tweets, questions, and answers) are short, unstructured and ambiguous, there is a need for a methodology capable of analyzing short text semantically, detecting possible entities present in the sentence, disambiguating between terms, and overcoming the gaps of tradition methods. The approach described in this thesis employs the named entities found in the text as the basis for the representation, enabling the capture of semantic information related to the documents present on the Web.
 
 
 \subsection{\hspace*{3pt}Named Entity Recognition}
 
-Grishman and  Sundheim \cite{grishman1996message} defined the task of \gls{ner}, as the task ``which involves identifying the names of all people, organizations and geographic locations in a text," also involving the identification of date expressions, hour, monetary values and percentages. 
+Grishman and  Sundheim \cite{grishman1996message} defined the task of \gls{ner}, as one ``which involves identifying the names of all people, organizations and geographic locations in a text", whilst also involving the identification of date expressions, %hour
+time, monetary values and percentages. 
 
-The named entity recognition task has been researched under several names over the years. For example Wikification \cite{Ratinov:2011}, Grounding \cite{leidner2003grounding} or Named-entity disambiguation \cite{hoffart2011robust}. The common approach can be generalized into following steps: find named entity mentions in given text, generate a set of candidates for each mention, select the best candidate for each mention, link the mention to the corresponding entry on Knowledge Base.
+The \gls{ner} task has been researched under several names over the years, for example Wikification \cite{Ratinov:2011}, Grounding \cite{leidner2003grounding} or Named-entity disambiguation \cite{hoffart2011robust}. The common approach can be generalized into the following steps: finding named entity mentions in a given text; generate a set of candidates for each mention; select the best candidate; and link the selected mention to the corresponding entry in the knowledge base.
 
-In its most common form, the \gls{ner} task recognizes a predefined number of semantic categories, such as those defined in \cite{grishman1996message}. However, it has also been successfully applied to specific domains such as biology \cite{campos2012biomedical} and geology \cite{sobhana2010conditional}, where a more substantial number of domain-related categories are used. A prevalent form is the use of linguistic rules for the recognition of entities. In this approach the rules are manually coded from grammatical and domain knowledge, requiring specialization in both to obtain good results \cite{nadeau2007survey}. Moreover, the use of linguistic rules restricts its use to documents written in the language for which the rules were codified, making it impossible to use them in other languages.
+In its most common form, the \gls{ner} task recognizes a predefined number of semantic categories, such as those defined in \cite{grishman1996message}. However, it has also been successfully applied to specific domains such as biology \cite{campos2012biomedical} and geology \cite{sobhana2010conditional}, where a more substantial number of domain-related categories are used. Another prevalent form is the use of linguistic rules for the recognition of entities. In this approach, the rules are manually coded from grammatical and domain knowledge, requiring specialization in both to obtain good results \cite{nadeau2007survey}. The use of linguistic rules restricts its applicability to documents written in the language for which the rules were codified, making it unusable with other languages.
 
-The \gls{ner} in a text goes through two phases: ii) the annotation of the grammatical classes of the text; and ii) the annotation of the names with the semantic category.
+The \gls{ner} task consists of two phases: i) the annotation of the grammatical classes of the text, and ii) the annotation of the names with the semantic category.
 
-The annotations identify for each word in the text what is the grammatical class. If the word is an entity name, it identifies its type.
-The quality of the algorithm depends on the annotator's ability to identify the names correctly and is limited to the types of entities used in the corpus. 
+The annotations identify the grammatical class for each word in the text. If the word is an entity name, they identify its type. The quality of the algorithm is dependent on the annotator's ability to identify the names correctly, and it is limited to the types of entities used in the corpus. 
 
-Figure \ref{fig:obama-example} shows an example of the \gls{ner} task in a post extracted from a social network\footnote{\url{https://twitter.com/BarackObama/status/925526988659548160}}  The word ``Michelle" was identified as the Person Michelle Obama and the Words ``New York" were identified as the Place New York City. 
+Figure \ref{fig:obama-example} shows an example of the \gls{ner} task in a post extracted from a social network\footnote{\url{https://twitter.com/BarackObama/status/925526988659548160}}.  The word ``Michelle" was identified as the Person Michelle Obama and the Words ``New York" were identified as the Place New York City. 
 
  
 \begin{figure}[H]
@@ -106,10 +108,9 @@ Figure \ref{fig:obama-example} shows an example of the \gls{ner} task in a post 
 
 
 \section{\hspace*{3pt}Automatic Text Classification}
+\label{sec:definition-automatic-text-classification}
 
-
-
-Automatic text classification is the assignment of natural language text to appropriate thematic categories, based on its content in a set o manually predefined categories.\cite{yang1999evaluation}. 
+Automatic text categorization is the activity of assigning text in natural language with categories from a predefined set according to their content. \cite{yang1999evaluation}. 
 
 This task can be formalized as follows: let $D = \{d_1,d_2,d_3,\ldots\,d_n\}$ be a finite set of documents and $C = \{c_1,c_2,c_3,\ldots\,c_n\}$ a finite set of predefined categories.
 
@@ -118,10 +119,9 @@ $\{d_i, c_i\} \in  D \times C $, where the membership value of  $s$ specifies th
 
 Two different types of text categorization task can be identified depending on
 the number of categories that could be assigned to each document. The first
-type, in which exactly one category is assigned to each $d_j \in D$, is named  as the single-class (or non-overlapping categories) text categorization task.
+type, in which precisely one category is assigned to each $d_j \in D$, is named as the single-class (or non-overlapping categories) text categorization task.
 The second type, in which any number of categories from zero to $|C|$ may be
-assigned to each $d_j \in D$, is called the multi-class (or overlapping categories) task
-
+assigned to each $d_j \in D$, is called the multi-class (or overlapping categories) task.
 
 
 According to Sebastiani\cite{Sebastiani:2002}, the definition of a text classifier can be summarized in the following steps:
@@ -129,200 +129,24 @@ According to Sebastiani\cite{Sebastiani:2002}, the definition of a text classifi
 \begin{enumerate}
 \item  Acquisition of documents belonging to the domain (i.e.,
 a collection of documents in $D$);
-\item Creation of a vocabulary of $T$ terms  $\{w_1,w_2,w_3,\ldots\,w_T\}$ that will be used in the representation of documents. This step involves preprocessing of the text, such as lexical analysis (elimination of digits, punctuation marks), removal of stopwords (articles, prepositions), stemming of words (reduction of the word to its radical), among others text operations;
+\item Creation of a vocabulary of $T$ terms  $\{w_1,w_2,w_3,\ldots,w_T\}$ that will be used in the representation of documents. This step involves preprocessing, such as lexical analysis (removal of digits, punctuation marks), removal of stopwords (articles, prepositions), and the stemming of words (reduction of the word to its radical) among other text operations;
 
-\item Creation of the initial representation of documents with the definition of the set of attributes that describe the documents. Each attribute may be merely a Boolean value that indicates whether or not a given vocabulary term is present in the document (i.e., Boolean representation).  Each attribute can also correspond to a numerical weight associated to a given term, indicating the relevance of the term to the document being described. 
+\item Creation of the initial representation of documents with the definition of the set of attributes that describe them. Each attribute may be merely a Boolean value that indicates whether or not a given vocabulary term exists in the document (i.e., Boolean representation).  Each attribute can also correspond to a numerical weight associated with a given term, indicating its relevance to the document being described. 
 
-\item Dimensionality Reduction, where the M most relevant attributes of the initial representation are selected (with M <T). This step can be done using different criteria for selection of attributes such as Information Gain, Mutual Information, $\tilde{\chi}^2$ statistic, and others \cite{Yang:1997}.
+\item Dimensionality Reduction, where the M most relevant attributes of the initial representation are selected (with M <T). This step can be done using different criteria for the selection of attributes, such as Information Gain, Mutual Information, $\tilde{\chi}^2$ statistic, and others \cite{Yang:1997}.
 
 \item Induction of the classifier from a training set. %At section \ref{sec:text-classifiers}, we will address some algorithms that can be used to generate classifiers;%
 
-\item Performance evaluation from a test set. Among the metrics used to evaluate classifiers, we can cite the precison, accuracy,  recall and F-measure. More about this evaluation metrics will be discussed in the description of the experiments that were carried out (chapter \ref{chapter:experiments}).
+\item Performance evaluation from a test set. Metrics used to evaluate classifiers include precision, accuracy,  recall, and F-measure. Further details regarding these evaluation metrics can be found in the description of the experiments (chapter \ref{chapter:experiments}).
 
 \end{enumerate}
 
 
+The methods that are used in text classification are frequently the same as those used in the more general area of \gls{ir}, where the goal is to find documents or sections within documents that are related to a particular query. Text classification methods are essential to finding relevant information in many different tasks that deal with large volumes of text-based information, such as finding Internet pages on a given subject, finding answers to similar questions that have been answered before, or classifying news by subject or newsgroup, among others. In each case, the goal is to assign the appropriate category or label to each document that needs to be classified.
 
+Over the last few years, a vast number of algorithms have been proposed for text classification using machine learning. Among them, one can cite the naive Bayes \cite{mccallum1998comparison}, \gls{knn} \cite{Rijsbergen:1979}, \gls{svm} \cite{joachims1998text} and rule learning algorithms \cite{slattery1998combining}. %, which have been widely used. 
+Research focusing on document classification usually reports on performance comparisons between different available algorithms.
 
-The methods that are used in \gls{tc} are frequently the same used in the more general area of \gls{ir}, where the goal is to find documents or sections within documents that are related to a particular query. \gls{tc} methods are essential to finding relevant information in many different tasks that deal with large volumes of text-based information. Some of the most traditional tasks where these methods are applied are: finding Internet pages on a given subject; finding answers to similar questions that have been answered before; classifying news by subject or newsgroup, among others. In each case, the goal is to assign the appropriate category or label to each document that needs to be classified.
+The approach proposed in this thesis is a multi-label classification method, capable of assigning different degrees of membership for a document regarding each one of the categories available. Multi-label classification problems can usually be reduced to a particular case of single-label classification. To make the results suitable for comparison with other approaches and with the judgment of humans, multi-label classifications were converted to a single-label assignment by considering only the categories with the highest degrees of membership. 
+%during the experiments we transformed 
 
-Over the last few years, a vast number of algorithms have been proposed for \gls{tc} using machine learning. Among them, one can cite the naive Bayes \cite{mccallum1998comparison}, \gls{knn} \cite{Rijsbergen:1979}, \gls{svm} \cite{joachims1998text} and rule learning algorithms \cite{slattery1998combining}, which have been widely used. The researches that deal with document classification usually report performance comparison among the different algorithms available.
-
-The approach proposed in this thesis is a multi-label classification method, capable of assigning different degrees of membership for a document regarding each one of the categories available. Furthermore, multi-label classification problems can usually be reduced to a particular case of single-label classification\cite{Sebastiani:2002}. To make our results suitable for comparison with other approaches and with the judgment of humans, during the experiments we transformed the classification in a single-label assignment by considering only the categories with the highest degrees of membership. 
-
-
-\section{\hspace*{3pt} Collective Knowledge Construction}
-
-Pierre Lévy~\cite{levy1997collective}, a French philosopher who specializes in the understanding of the cultural and cognitive implications of digital technologies and the phenomenon of human collective intelligence, argues that knowledge is in humanity, and every individual can offer knowledge.
-
-The cyberspace allows individuals to remain interconnected regardless of their geographic location. It deterritorializes knowledge and supports the development of collective intelligence. With regard to the efficient mobilization of competences, the author has stated that an essential factor is to identify and understand the capabilities of the subjects in their individualities. The project of collective intelligence, described by Lévy is not only linked to cognition.  It is also a global project that presumes practical actions intended to mobilize the competences of individuals to provide mutual recognition and enrichment of those who are involved in this proposal ~\cite{levy1997collective}.
-
-Therefore, Lévy ~\cite{levy2001cyberculture} defines collective intelligence as a new sustainable way of thinking through social connections that become viable through the use of a network of people on the Web. This collective intelligence is distributed and coordinated in real time, which results in an efficient mobilization of skills, and the cyberspace favors its development.
-
-\section{\hspace*{3pt} The Wikipedia}
-
-
-Wikipedia is the most substantial encyclopedia freely available on the Web. It has been developed and curated by a large number of users over time and represents the result of a process of collective construction about facts, people and the broadest type of topics currently found on the Web.
-
-Wikipedia content is available in around 300\footnote{\url{https://en.wikipedia.org/wiki/List_of_Wikipedias}} active languages. In the English version, it has more than 5.4M articles,  written and edited by a total of about 30 million registered editors of whom roughly 120,000 are currently active. In the last ten years, there has been a consistent average of 30 million edits per year, which includes both the creation of new articles and development of existing ones. 
-
-This online encyclopaedia was created in January 2001 as an improvement of Nupedia, a free encyclopedia written only by specialists with rigid evaluation criteria, which had low adherence and was suspended in 2003.
-Both Wikipedia and Nupedia projects were initiatives by Jimmy Wales and Larry Sanger. At the beginning of 2008, Wikipedia exceeded 8 million entries in 253 languages, doubling the number of entries each year during the following years, making it the 5th most accessed site in the web, according to the Alexa page\footnote{\url{www.alexa.com}}.
-
-The success among users and its dissemination as a source of reference do not lie in the fact that Wikipedia is on the Internet since there are others alternatives available online. What differs is the possibility of participation, collaboration and collective construction. 
-
-
-The Wiki system allowed not only the gathering of data but also the generation of new knowledge in a collective way between different subjects. In this regard, Wikipedia is not merely a tool for indexing and formatting but a space for debating and synthesizing texts. The contributors are not just ``librarians", but indeed authors, in the strictest sense of the word.  Hereof, Wikipedia is more than a source of information; it is also an invitation to the collaborative work towards knowledge construction. While the use of a conventional encyclopedia implies in querying for information that becomes dated at the time of its publication, and whose volumes rest immutable on the shelf, Wikipedia opens its pages to the present and the ongoing debate over available writings. Each participant contributes by offering questions for discussion. Through these mutual exchanges, the text of the entries is being discussed and improved. When text is compromised by the inclusion of dubious information, new discussions and corrections can be initiated.
-Some authors have shown that vandalism and inaccuracies in Wikipedia are often reverted within a matter of minutes ~\cite{kittur2007he} ~\cite{viegas2004studying}.
-
-A study by Wilkinson \& Huberman ~\cite{wilkinson2007assessing} indicated that the popularity of the project and the reliability of many of the texts is a result of the intense participation of registered users.
-The thousands of volunteers who contribute to the project make the site an environment of intense social interaction, in which each user fulfills specialized functions, according to their interest, availability and eventually the bureaucratic role occupied in the Wikipedia project. 
-
-
-Seeking to increase the reliability of content built in a collective and collaborative environment, Wikipedia has created a rigid organizational structure. 
-
-Note that, as Tapscott and Willians \cite{tapscott2008wikinomics} affirm, collaborative production mixes elements of hierarchy and self-organization and is based on meritocratic principles of organization.
-
-The editing community enforces specific codified rules designed to ensure accuracy and prevent bias in articles. A study comparing the efficiency of various scientific subjects in Wikipedia and Encyclopaedia Britannica found that while imprecisions were not infrequent, they occurred at similar rates between the two ~\cite{giles2005internet}. In particular, a Wikipedia science article contained an average of four mistakes, while an Encyclopaedia Britannica article included only three. 
-As a matter of fact, Encyclopaedia Britannica currently has about 65,000, while English Wikipedia has approximately 5.4 million articles totaling 1.8 billion words. 
-
-
-The Wikipedia is a free and online encyclopedia where all readers can update their content by including and editing their articles. Instead of following a peer review process by experts, Wikipedia articles are available for revisions and enhancements by readers. In his bibliographical review on the use of Wikipedia in Computing Science researches,  Wikipedia is a  valuable resource with broad functionalities.  In \cite{medelyan2009mining} it is demonstrated how researchers had developed sophisticated techniques for extracting knowledge from different perspectives:
-
-
-
-\begin{itemize}
-\item Wikipedia as an Encyclopaedia; 
-
-
-\item Wikipedia as a corpus; 
-\item Wikipedia as a thesaurus; 
-\item Wikipedia as a database; 
-\item Wikipedia as an ontology; 
-\item Wikipedia as a graph
-
-
-Even though Wikipedia texts are written in natural language, some structured resources are available for organizing the articles into categories, for connecting different articles, as well as for presenting relevant properties of the topic described in the article.
-
-\end{itemize}
-\subsection{\hspace*{3pt}Wikipedia Structure}
-
-Wikipedia has different types of elements in its structure: articles, redirect pages, disambiguation pages, hyperlinks, categories, infoboxes, and Wikilinks. 
-
-\subsubsection{\hspace*{3pt}Titles}
-Each Wikipedia article has a name, which is the most common form of identification of the concept or entity described in the article.  People, organizations, places, events, and species of living beings are common classes described on Wikipedia. The titles are unique identifiers within the set of Wikipedia articles for a language.
-
-\subsubsection{\hspace*{3pt}Wikilinks}
-
-The guarantee of the uniqueness of the title makes it possible to reference an article through its title. Wikipedia explores this possibility through internal links (Wikilinks).   Wikilinks are references that enable navigation between articles in a network of internal links built by the publishers of the articles. 
-
-Wikipedia recommends that editors link only the first occurrence of a reference to another article through a Wikilink. 
-
-It is also possible to separate the link itself from the term it refers to, thus creating an alternative arbitrary text for the link. This process is often used for homonyms and abbreviations and can be applied by adding a pipe "|" divider followed by the alternative name. The article comes before the divider and the text that is displayed and placed after it.  For example, if we format a link like [[List of Presidents of the United States| 44th President of the United States]] the final article will display only the 44th President of the United States in the text and it will be a clickable link leading to the List of Presidents of the United States article on Wikipedia. 
-
-\subsubsection{\hspace*{3pt}Disambiguation}
-
-In many languages, it is common that a single word represents different concepts or entities (homonymous), which would violate this restriction of uniqueness for Wikipedia titles. In these cases, the article that defines the most known concept remains with the simple name, and the other titles must have a suffix for disambiguation. The suffix of disambiguation must present a detail that makes possible the differentiation of one article from the others. It is suggested that editors create a specific disambiguation page that lists the different homonymous articles with internal links to their contents. When it is not possible to determine which of the concepts is best known, the disambiguation page has the simple title, and all other pages have the suffix for disambiguation.
-
-
-An example of disambiguation on Wikipedia in English is the concept ``Mercury" (see figure \ref{fig:mercury-desambiguation}, which can mean:
-
- \begin {itemize}
- \item A metallic chemical element with the symbol 'Hg.'
- \item A Roman god
- \item The first planet from the Sun
- \end {itemize}
-
-
- In this example, since it is not possible to determine the most known entity,  the disambiguation page has the title ``Mercury" \footnote{\url{https://en.wikipedia.org/wiki/Mercury}}, The planet has the title ``Mercury (planet)"\footnote{\url{https://en.wikipedia.org/wiki/Mercury_(planet)}}, the god has the title ``Mercury (mythology)"\footnote{\url{https://en.wikipedia.org/wiki/Mercury_(mythology)}} and the element is named ``Mercury (element)"\footnote{\url{https://en.wikipedia.org/wiki/Mercury_(element)}}.
-
-\begin{figure}[!h]
-\centering
-  \includegraphics[width=\linewidth]{desambiguation}
-  \caption{Disambiguation page for the term ``Mercury"}
-  \label{fig:mercury-desambiguation}
-\end{figure}
-
-
-\subsubsection{\hspace*{3pt} Redirects}
-
-Another variant of Wikilinks is the redirect, employed when different textual forms know a concept or entity. This situation would conflict with the restriction of the uniqueness of titles, imposing the repetition of the content of an article with different titles. 
-
-The redirect pages contain only text in the form of a directive without gender, number, or case. The central purpose is to find a single article for equivalent terms. For example, if the user searches for ``apples," the redirect page will refer them to the ``apple" article. 
-
-Redirections also occur with people names, when they are known both by their full name and by part of their name or surname. It is the case of the English writer  J. R. R. Tolkien, well-known only by his last name, Tolkien.
-
-\subsubsection{\hspace*{3pt} Infoboxes}
-
-According to Wikipedia documentation\footnote{https://en.wikipedia.org/wiki/Help:Infobox}, infoboxes are fixed-format tables that summarize relevant aspects of an article. It is an optional feature, but they present common attributes between different subjects. Wikipedia recommends the use of a predefined infobox template, as they already have known suggested attributes by 
-. 
-
-When editors use predefined infoboxes in an article, Wikipedia displays the table with special formatting that enriches the visual aspect of the box. 
-
-These predefined infoboxes attributes are also used as metadata by projects such as DBpedia. 
-
-Figure \ref{fig:mercury-infobox} shows the infobox for the article about the Mercury (a god in Roman religion and mythology). It is also possible to see the template ``Infobox deity". 
-
-
-
-\begin{figure}[!h]
-\centering
-  \includegraphics[width=0.8\linewidth]{mercury-infobox}
-  \caption{Example Infobox of the page related to the god Mercury with the default properties for infoboxes about deities.}
-  \label{fig:mercury-infobox}
-\end{figure}
-
-
-
-\subsubsection{\hspace*{3pt} Categories}
-
-Every Wikipedia article should have at least one category. Categories are collections that identify topics in the encyclopedia. 
-
-The category structure is not a tree. Therefore some categories have multiple supercategories, and one article can belong to several categories. In the same way as links, categories show a semantic structure between Wikipedia articles. 
-
-It should be noted that although the structure of the Wikipedia category forms a taxonomy, it is not represented by a simple tree of categories and subcategories but, in fact, by a complex graph. This graph allows multiple categorizations of topics simultaneously, which means that one category may have multiple parents. The category "Semantics" is a good example of this complex structure since it is a subcategory of ``Grammar",  ``Linguistics", ``Concepts in logic", ``Semiotics", ``Philosophy of language" and others (see \ref{fig:semantics-category}).
-
-
-\begin{figure}[H]
-\centering
-  \includegraphics[width=0.8\linewidth]{graph-semantics}
-  \caption{Example of an induced graph showing the supercategories of ``Semantics" in the Wikipedia Category Graph}
-  \label{fig:semantics-category}
-\end{figure}
-
-Although not a semantic basis, Wikipedia has a set of characteristics, such as the definition of a large number of articles and organization of articles in categories, which makes an essential semantic resource.
-
-A simple example, but one that illustrates well the complexity of the relationships between Wikipedia categories is the Apple concept (the fruit) , which is directly linked to four categories: ``Apples", ``Malus", ``Fruits originating in Asia," and ``Plants described in 1768". Each of these categories has been added and cured by people who are part of the Wikipedia community. In addition to the explicit knowledge in the directly attributed categories, a vast implicit knowledge can be inferred by the relations between them, both generically and in a specific way. If we take as starting point the category Apples, from the analysis of their links to the top of the classification, we perceive a more general case: Apples $\rightarrow$  Edible Fruits $\rightarrow$ Edible Plants $\rightarrow$ Food $\rightarrow$ Food and Drink $\rightarrow$ Health.
-To illustrate a more specific case, let us take the Malus category as the origin and analyze one of the possible paths to the top: Malus $\rightarrow$ Maleae $\rightarrow$ Prunoideae $\rightarrow$ Rosaceae $\rightarrow$ Rosales $\rightarrow$ Rosids $\rightarrow$ Core Eudicots $\rightarrow$ Eudicots $\rightarrow$ Angiosperms $\rightarrow$ Plants $\rightarrow$ Eukaryota $\rightarrow$ Organisms $\rightarrow$ Life.
-These are just examples of small fragments in Wikipedia's categorization structure for the Apple concept. The complete structure involves 33 different categories and 42 different relations between them (See figure \ref{fig:semantics-category-apple}).
-
-
-\begin{figure}[H]
-\centering
-  \includegraphics[width=0.8\linewidth]{graph}
-  \caption{Example of an induced graph showing the categories and relationships for the Entity Apple towards Main topics}
-  \label{fig:semantics-category-apple}
-\end{figure}
-
-
-%\subsection{\hspace*{3pt} DBpedia}
-
-%As described directly on the DBpedia about page\footnote{url{https://wiki.dbpedia.org/about}} DBpedia is a crowd-sourced community effort to extract structured content from the information created in various Wikimedia projects. This structured information resembles an open knowledge graph (OKG) which is available for everyone on the Web. A knowledge graph is a particular kind of database which stores knowledge in a machine-readable form and provides a means for information to be collected, organized, shared, searched and utilized.
-
-%The DBpedia dataset has many advantages compared to the raw data from Wikipedia. Besides the more convenient access to the underlying Wikipedia data sources, it also provides a higher data quality. The higher quality is because the extraction framework embeds multiple steps commonly found in data mining applications, such as duplicate removal in the form of mapping redundant infobox properties to the same DBpedia property.
-%Therefore, the present work is focussed on using DBpedia for the entity named recognition and Linking, as well as for traversing entities' categories.
-
-%\subsubsection{\hspace*{3pt} SPARQL}
-
-%\gls{sparql} is a query language capable of retrieving and manipulating data stored in the \gls{rdf} format that is the basis of the OWL language. \gls{rdf} is a labeled and directed data format used to represent information on the Web \cite{prud2008sparql}. 
-
-%In the context of this research, our approach exploits a small part of what the SPARQL language can provide. We  navigate in the DBpedia hierarchy to retrieve broader semantic relations between the entities and its categories. 
-
-
-\subsection{The Wikipedia Category Graph}
-
-Regarding the reduction of dimensionality, our proposed method consists of navigating in the \gls{wcg} from each category extracted related to the entities obtained from the text-based resources towards the top of the graph by all the shortest paths between the category and a set of top-level categories. 
-
-The \gls{wcg} mentioned above is a massive set of almost  1,500 categories, describing a broad domain of knowledge and ranging from the very precise, such as ``Lists of Canadian network television schedules,” to the very general, such as ``information.” The categories are connected by hypernym relationships, with a child category having an ``is-a” relationship to its parents. However, the graph is not strictly hierarchic: there exist shortcuts in the connections (i.e., starting from one child category and going up two different paths of different lengths to reach the same parent category) as well as loops (i.e., beginning from one child category and going up a path to reach the same child category again).
-
-Given the complexity and dimension of the \gls{wcg}, a graph-theoretic analysis was carried out and is described in chapter \ref{chapter:graph}. The primary goal of this analysis is The description of Wikipedia the understanding of the organization of this body of knowledge, as well as the possibilities and challenges that emerge from decoding this underlying structure. The description of the topology of the graph also enables to estimate whether graph-based techniques for semantic analysis and information retrieval can be applied to the \gls{wcg} or not.
